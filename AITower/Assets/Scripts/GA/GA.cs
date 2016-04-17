@@ -23,7 +23,7 @@ public class GA {
 	}
 	/////////////////////////////////////////////////////
 
-	GA() {
+	public GA() {
 		population = new ArrayList();
 		futurePopulation = new ArrayList();
 		mutationFunctions = new ArrayList();
