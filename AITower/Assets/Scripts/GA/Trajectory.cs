@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Trajectory : MonoBehaviour {
+// This class is an abstract version of what a trajectory for a bullet should be
 
-	// Use this for initialization
-	void Start () {
-	
+public abstract class Trajectory : MonoBehaviour {
+	// still figureing out how this will work
+
+	Trajectory() {
+		// to be implemented
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+	abstract void FollowTrajectory();
 }

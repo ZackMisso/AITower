@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Individual : MonoBehaviour {
+public class Individual {
+	private Trajectory trajectory;
 
-	// Use this for initialization
-	void Start () {
-	
+	Individual() {
+		trajectory = null;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	Individual(Trajectory traj) {
+		trajectory = traj;
 	}
+
+	// getter methods
+	Trajectory getTrajectory() { return trajectory; }
+
+	// setter methods
+	void setTrajectory(Trajectory param) { trajectory = param; }
 }

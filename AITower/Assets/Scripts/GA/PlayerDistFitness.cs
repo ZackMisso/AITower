@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerDistFitness : MonoBehaviour {
+public class PlayerDistFitness : FitnessFunction {
+	PlayerDistFitness() { }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	float EvaluateFitness(Individual individual) {
+		// to be implemented
+		return 0.0f;
 	}
 }
