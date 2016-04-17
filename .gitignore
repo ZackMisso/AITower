@@ -27,12 +27,13 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.swp
 
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
+/AITower/[Ll]ibrary/
+/AITower/[Tt]emp/
+/AITower/[Oo]bj/
+/AITower/[Bb]uild/
+/AITower/[Bb]uilds/
 #/Assets/AssetStoreTools*
 
 # Unity3D generated meta files
