@@ -4,17 +4,17 @@ using System.Collections;
 public class Individual {
 	private Trajectory trajectory;
 
-	Individual() {
+	public Individual() {
 		trajectory = null;
 	}
 
-	Individual(Trajectory traj) {
+	public Individual(Trajectory traj) {
 		trajectory = traj;
 	}
 
 	// getter methods
-	Trajectory getTrajectory() { return trajectory; }
+	public Trajectory getTrajectory() { return trajectory; }
 
 	// setter methods
-	void setTrajectory(Trajectory param) { trajectory = param; }
+	public void setTrajectory(Trajectory param) { trajectory = param; }
 }

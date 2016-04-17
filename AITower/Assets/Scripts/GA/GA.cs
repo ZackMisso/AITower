@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.ArrayList;
 
 public class GA {
 	// class reference

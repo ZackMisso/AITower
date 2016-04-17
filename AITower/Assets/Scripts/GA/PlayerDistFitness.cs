@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class PlayerDistFitness : FitnessFunction {
-	PlayerDistFitness() { }
+	public PlayerDistFitness() { }
 
-	float EvaluateFitness(Individual individual) {
+	public float EvaluateFitness(Individual individual) {
 		// to be implemented
 		return 0.0f;
 	}

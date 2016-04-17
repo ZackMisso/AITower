@@ -12,4 +12,8 @@ public class FractalTrajectory : Trajectory {
 	void Update () {
 
 	}
+
+	public override void FollowTrajectory() {
+		// to be implemented
+	}
 }

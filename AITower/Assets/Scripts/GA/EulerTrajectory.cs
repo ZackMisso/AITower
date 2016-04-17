@@ -7,9 +7,13 @@ public class EulerTrajectory : Trajectory {
 	void Start () {
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public override void FollowTrajectory() {
+		// to be implemented
 	}
 }

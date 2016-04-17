@@ -6,9 +6,9 @@ using System.Collections;
 public abstract class Trajectory : MonoBehaviour {
 	// still figureing out how this will work
 
-	Trajectory() {
+	public Trajectory() {
 		// to be implemented
 	}
 
-	abstract void FollowTrajectory();
+	public abstract void FollowTrajectory();
 }
