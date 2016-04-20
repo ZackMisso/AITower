@@ -14,12 +14,14 @@ public abstract class Trajectory : MonoBehaviour {
 	public float frequency; // time to move one unit
 
 	public void FixedUpdate() {
-		FollowTrajectory();
+		//Debug.Log("ASFASDF");
+		//FollowTrajectory();
 	}
 
 	public void BeginTrajectory() {
 		startTime = Time.time;
 		lastUpdateTime = Time.time;
+		initialPosition = transform.position;
 	}
 
 	public abstract void FollowTrajectory();
