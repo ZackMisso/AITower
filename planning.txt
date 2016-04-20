@@ -1,0 +1,19 @@
+List of Enemies
+	Turrets
+	Wandering Enemy
+	Chasing Enemy
+	
+List of Obstacles
+	Lava Pits
+	Blocks/Walls
+	
+Goal
+	Elevator
+	Goes up once you get on
+	Freezes you 
+	
+Player Abilities
+	Moving (x,y)
+	Jumping
+	Shooting?
+	
