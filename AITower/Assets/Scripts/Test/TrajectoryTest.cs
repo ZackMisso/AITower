@@ -5,11 +5,11 @@ public class TrajectoryTest : MonoBehaviour {
   public Trajectory trajectory;
 
   void Start() {
-    trajectory.BeginTrajectory();
+    trajectory.BeginTrajectory(transform);
   }
 
 	void Update() {
     Debug.Log("Trajectory Test");
-    trajectory.FollowTrajectory();
+    trajectory.FollowTrajectory(transform);
   }
 }

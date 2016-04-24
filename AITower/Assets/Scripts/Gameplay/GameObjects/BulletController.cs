@@ -5,12 +5,9 @@ public class BulletController : MonoBehaviour {
   public Trajectory trajectory;
   // there will also be more things later like material and particle effect
 
-  void Start() {
-    // blah
-  }
-
 	void Update() {
-    // to be implemented
+    if(trajectory != null)
+      trajectory.FollowTrajectory(transform);
   }
 
   // ToDo :: add Collision Code

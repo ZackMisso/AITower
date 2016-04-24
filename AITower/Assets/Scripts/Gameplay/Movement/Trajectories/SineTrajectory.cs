@@ -6,7 +6,7 @@ public class SineTrajectory : Trajectory {
 	public float amplitude = 1.0f;
 	//public float length = 0.0f;
 
-	public override void FollowTrajectory() {
+	public override void FollowTrajectory(Transform currentTransform) {
 		float length = Time.time - startTime;
 		//Vector3 sineMap = (new Vector3(1.0f,1.0f,1.0f)) - lineOfSight;
     //Debug.Log(Mathf.Sin(Time.time) * amplitude);
@@ -17,7 +17,7 @@ public class SineTrajectory : Trajectory {
     float dX = sineMap.x * Mathf.Sin(Time.time) * amplitude;
     float dY = sineMap.y * Mathf.Sin(Time.time) * amplitude;
     float dZ = sineMap.z * Mathf.Sin(Time.time) * amplitude;
-    transform.position = new Vector3(newX+dX,newY+dY,newZ+dZ);
+    currentTransform.position = new Vector3(newX+dX,newY+dY,newZ+dZ);
     //lastUpdateTime = Time.time;
 	}
 }

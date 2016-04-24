@@ -18,11 +18,11 @@ public abstract class Trajectory : MonoBehaviour {
 		//FollowTrajectory();
 	}
 
-	public void BeginTrajectory() {
+	public void BeginTrajectory(Transform currentTransform) {
 		startTime = Time.time;
 		lastUpdateTime = Time.time;
-		initialPosition = transform.position;
+		initialPosition = currentTransform.position;
 	}
 
-	public abstract void FollowTrajectory();
+	public abstract void FollowTrajectory(Transform currentTransform);
 }
