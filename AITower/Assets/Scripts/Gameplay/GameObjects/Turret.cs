@@ -8,6 +8,8 @@ public class Turret : MonoBehaviour {
 	float timeSinceLastBullet;
 
 	// is just transform.position
+	// ^^ But we can have turrets of different sizes. Therefore we need an offset
+	// to where the cannon is for the turret
 	//public Vector3 position;
 
 	//is just transform.right
@@ -15,9 +17,9 @@ public class Turret : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//transform.Rotate(Vector3.up, Time.deltaTime*90);
