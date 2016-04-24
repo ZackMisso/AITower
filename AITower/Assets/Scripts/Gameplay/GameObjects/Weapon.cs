@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour {
   public int shotsInClip = 0; // 0 means it can not fire
   public int shotsRemaining = 0;
   public float reloadTime = 3.0f;
-  private float timeReloadStart = 0.0f;
+  public float timeReloadStart = 0.0f;
   private bool reloading = false;
 
   void Start() { }
@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour {
 	void Update() {
     if(reloading) {
       float currentTime = Time.time;
-      if(currentTime < timeReloadStart + reloadTime) {
+      if(currentTime > timeReloadStart + reloadTime) {
         reloading = false;
         shotsRemaining = shotsInClip;
       }
@@ -41,6 +41,7 @@ public class Weapon : MonoBehaviour {
     //bullet.AddComponent<Trajectory>();
     BulletController bc = bullet.GetComponent<BulletController>();
     bc.trajectory = trajectory;
+    bullet.transform.position = transform.position;
     // check if the weapon should reload
     if(shotsRemaining == 0) {
       Debug.Log("WHAT");
