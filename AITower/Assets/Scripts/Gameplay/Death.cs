@@ -4,7 +4,7 @@ using System.Collections;
 public class Death : MonoBehaviour {
 
     public int deathCount = 0;
-    public Vector3 startPosition = new Vector3(0, 0, 0);
+    public Vector3 startPosition = new Vector3(0, 1, -5);
     private GUIStyle style = new GUIStyle();
 
     void Start ()
@@ -28,7 +28,7 @@ public class Death : MonoBehaviour {
     void Die()
     {
         deathCount++;
-        transform.position = startPosition;
+        transform.position = new Vector3(0, 1, -5);
         Debug.Log("Death Count: " + deathCount);
     }
 
