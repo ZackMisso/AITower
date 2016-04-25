@@ -5,7 +5,7 @@ public class TrajectoryTest : MonoBehaviour {
   public Trajectory trajectory;
 
   void Start() {
-    trajectory.BeginTrajectory(transform);
+    //trajectory.BeginTrajectory(transform);
   }
 
 	void Update() {

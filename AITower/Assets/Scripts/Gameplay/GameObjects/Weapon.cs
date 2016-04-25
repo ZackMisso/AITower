@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour {
   public int shotsInClip = 0; // 0 means it can not fire
   public int shotsRemaining = 0;
   public float reloadTime = 3.0f;
-  public float timeReloadStart = 0.0f;
+  private float timeReloadStart = 0.0f;
   private bool reloading = false;
 
   void Start() { }

@@ -11,18 +11,18 @@ public abstract class Trajectory : MonoBehaviour {
 	public bool followLineOfSight = false;
 	protected float startTime;
 	protected float lastUpdateTime;
-	public float frequency; // time to move one unit
+	public float speed; // time to move one unit
 
-	public void FixedUpdate() {
+	//public void FixedUpdate() {
 		//Debug.Log("ASFASDF");
 		//FollowTrajectory();
-	}
+	//}
 
-	public void BeginTrajectory(Transform currentTransform) {
-		startTime = Time.time;
-		lastUpdateTime = Time.time;
-		initialPosition = currentTransform.position;
-	}
+	//public void BeginTrajectory(Transform currentTransform) {
+	//	startTime = Time.time;
+	//	lastUpdateTime = Time.time;
+	//	initialPosition = currentTransform.position;
+	//}
 
 	public abstract void FollowTrajectory(Transform currentTransform);
 }

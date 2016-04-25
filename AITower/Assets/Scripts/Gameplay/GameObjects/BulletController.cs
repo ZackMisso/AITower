@@ -7,14 +7,8 @@ public class BulletController : MonoBehaviour {
   // there will also be more things later like material and particle effect
 
 	void FixedUpdate() {
-    //Debug.Log(transform.position.x);
-    //if(trajectory != null) {
-    //  Debug.Log(transform.position.x);
     if(moving)
       trajectory.FollowTrajectory(transform);
-    //} else {
-    //  Debug.Log("Trajectory is Null");
-    //}
   }
 
   // ToDo :: add Collision Code
