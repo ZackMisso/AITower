@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour {
   public bool moving = false;
   // there will also be more things later like material and particle effect
 
-	void Update() {
+	void FixedUpdate() {
     //Debug.Log(transform.position.x);
     //if(trajectory != null) {
     //  Debug.Log(transform.position.x);
