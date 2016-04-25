@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
     if(weapon == null) {
       Debug.Log("Player Object Must be Given a Weapon");
     }
+    PGSystem.Initialize();
   }
 
 	void Update() {
