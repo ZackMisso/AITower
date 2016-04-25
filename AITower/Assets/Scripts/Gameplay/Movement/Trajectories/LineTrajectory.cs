@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 public class LineTrajectory : Trajectory {
+	void Update() {
+		lineOfSight = transform.forward;
+	}
+
 	public override void FollowTrajectory(Transform currentTransform) {
     float newX = currentTransform.position.x + lineOfSight.x * speed;
     float newY = currentTransform.position.y + lineOfSight.y * speed;
