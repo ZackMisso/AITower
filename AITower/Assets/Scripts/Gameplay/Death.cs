@@ -4,7 +4,7 @@ using System.Collections;
 public class Death : MonoBehaviour {
 
     public int deathCount = 0;
-    public Vector3 startPosition = new Vector3(0, 1, -5);
+    public Vector3 startPosition = new Vector3(0, 1, 0);
     private GUIStyle style = new GUIStyle();
 
     void Start ()
@@ -28,7 +28,7 @@ public class Death : MonoBehaviour {
     void Die()
     {
         deathCount++;
-        transform.position = new Vector3(0, 1, -5);
+        transform.position = startPosition;
         Debug.Log("Death Count: " + deathCount);
     }
 
@@ -37,7 +37,7 @@ public class Death : MonoBehaviour {
         string death_string = deathCount.ToString() + " death";
         if (deathCount != 1)
             death_string += "s";
-        
+
         GUI.Box(new Rect(5, Screen.height - 30,80,25), death_string, style);
     }
 }

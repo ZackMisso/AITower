@@ -33,14 +33,18 @@ public class PGSystem : MonoBehaviour {
 	// level bounds 37 to -37
 	public void GenerateLevel() {
 		levelNum++;
+		Debug.Log("Generating Level");
 		int turrets = calculateNumberOfNewTurrets();
 		for(int i=0;i<turrets;i++) {
+			Debug.Log("Generating Turret");
 			float xpos = Random.value - 0.5f;
 			float zpos = Random.value - 0.5f;
+			float angle = Random.value * 360;
 			xpos *= 37;
 			zpos *= 37;
-			GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
+			GameObject bullet = (GameObject)Instantiate(Resources.Load("Turret"));
 			bullet.transform.position = new Vector3(xpos,1.0f,zpos);
+			bullet.transform.rotation = Quaternion.AngleAxis(angle,Vector3.up);
 		}
 		// to be impelemented
 	}

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
       Debug.Log("Player Object Must be Given a Weapon");
     }
     PGSystem.Initialize();
+    PGSystem pg = PGSystem.GetInstance();
+    pg.GenerateLevel();
   }
 
 	void Update() {
