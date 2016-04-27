@@ -17,9 +17,9 @@ public class PlayerController : MonoBehaviour {
     PGSystem.Initialize();
     PGSystem pg = PGSystem.GetInstance();
     pg.GenerateLevel();
-  }
+    }
 
-	void Update() {
+    void Update() {
     // to be implemented
   }
 }
