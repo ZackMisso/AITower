@@ -22,7 +22,7 @@ public class Death : MonoBehaviour {
 
     void OnTriggerEnter (Collider other)
     {
-		if (other.gameObject.tag.Contains("Death"))
+        if (other.gameObject.tag.Contains("Death"))
         {
             Die();
         }
