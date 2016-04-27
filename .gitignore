@@ -44,3 +44,7 @@ sysinfo.txt
 
 # Builds
 *.apk
+
+# Reports
+*.doc
+*.docx
