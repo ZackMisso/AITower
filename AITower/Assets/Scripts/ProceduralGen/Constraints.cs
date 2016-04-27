@@ -40,6 +40,14 @@ public class Constraints : MonoBehaviour {
   public int GAMinBulletsPerWave = 0;
   public float GAMutationRate = 0.0f;
   public float GACrossoverRate = 0.0f;
+  public float MinEulerRate = 0.0f;
+  public float MaxEulerRate = 0.0f;
+  public float MinFractalRate = 0.0f;
+  public float MaxFractalRate = 0.0f;
+  public float MinLineRate = 0.0f;
+  public float MaxLineRate = 0.0f;
+  public float MinSineRate = 0.0f;
+  public float MaxSineRate = 0.0f;
   // Constraints for Procedural Generation
   // ?????????????????????????????????????
 }

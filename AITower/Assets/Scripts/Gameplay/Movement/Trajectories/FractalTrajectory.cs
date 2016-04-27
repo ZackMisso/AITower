@@ -18,11 +18,18 @@ public class FractalTrajectory : Trajectory {
 	}
 
 	// GA Methods
-	public override void Mutate() {
+	public override Trajectory Mutate() {
 		// to be implemented
+		return null;
 	}
 
-	public override void Crossover(Trajectory other) {
+	public override Trajectory Crossover(Trajectory other) {
 		// to be implemented
+		return null;
+	}
+
+	public override Trajectory CreateRandomSelf() {
+		// to be implemented
+		return null;
 	}
 }

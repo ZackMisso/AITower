@@ -1,17 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GA {
 	// class reference
-	static GA instance;
-	// member variables
-	ArrayList population;
-	ArrayList futurePopulation;
-	ArrayList deadPopulation;
-	ArrayList hallOfFame;
+	private static GA instance;
 
-	ArrayList mutationFunctions;
-	FitnessFunction fitnessFunction;
+	// member variables
+	private List<Individual> population;
+	private List<Individual> hallOfFame;
+	private List<Individual> deadPopulation;
+
+	// external functions
+	private FitnessFunction fitnessFunction;
+
+	// rates of mutation
+	private float eulerRate;
+	private float fractalRate;
+	private float lineRate;
+	private float sineRate;
+
+	// total made of each
+	private int eulerTotalCount;
+	private int fractalTotalCount;
+	private int lineTotalCount;
+	private int sineTotalCount;
+
+	// current made of each
+	private int eulerCount;
+	private int fractalCount;
+	private int lineCount;
+	private int sineCount;
+
+	// total fitness of each (used for adaptive rates)
+	private float eulerTotalFitness;
+	private float fractalTotalFitness;
+	private float lineTotalFitness;
+	private float sineTotalFitness;
+
+	// generation data
+	private int numLiveBullets;
 
 	///////////////// static methods ////////////////////
 	static GA GetInstance() {
@@ -24,16 +52,35 @@ public class GA {
 	/////////////////////////////////////////////////////
 
 	public GA() {
-		population = new ArrayList();
-		futurePopulation = new ArrayList();
-		mutationFunctions = new ArrayList();
-		deadPopulation = new ArrayList();
-		hallOfFame = new ArrayList();
+		population = new List<Individual>();
+		hallOfFame = new List<Individual>();
+		deadPopulation = new List<Individual>();
 		fitnessFunction = new PlayerDistFitness();
+		InitializeVariables();
 		InitializePopulation();
 	}
 
-	void InitializePopulation() {
+	private void InitializeVariables() { // TODO :: Fill In Rates
+		eulerRate = 0.0f;
+		fractalRate = 0.0f;
+		lineRate = 0.0f;
+		sineRate = 0.0f;
+		eulerCount = 0;
+		fractalCount = 0;
+		lineCount = 0;
+		sineCount = 0;
+		eulerTotalCount = 0;
+		fractalTotalCount = 0;
+		lineTotalCount = 0;
+		sineTotalCount = 0;
+		eulerTotalFitness = 0.0f;
+		fractalTotalFitness = 0.0f;
+		lineTotalFitness = 0.0f;
+		sineTotalFitness = 0.0f;
+		numLiveBullets = 0;
+	}
+
+	private void InitializePopulation() {
 		// first initialization
 		// to be implemented
 	}

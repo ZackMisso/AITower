@@ -26,6 +26,7 @@ public abstract class Trajectory : MonoBehaviour {
 
 	public abstract void FollowTrajectory(Transform currentTransform,float time);
 	// GA Methods
-	public abstract void Mutate();
-	public abstract void Crossover(Trajectory other);
+	public abstract Trajectory Mutate();
+	public abstract Trajectory Crossover(Trajectory other);
+	public abstract Trajectory CreateRandomSelf();
 }
