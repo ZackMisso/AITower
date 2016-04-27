@@ -34,7 +34,7 @@ public class PGSystem : MonoBehaviour {
 	public void GenerateLevel() {
 		levelNum++;
 		Debug.Log("Generating Level");
-		int turrets = calculateNumberOfNewTurrets();
+		int turrets = CalculateNumberOfNewTurrets();
 		for(int i=0;i<turrets;i++) {
 			Debug.Log("Generating Turret");
 			float xpos = Random.value - 0.5f;
@@ -49,7 +49,18 @@ public class PGSystem : MonoBehaviour {
 		// to be impelemented
 	}
 
-	public int calculateNumberOfNewTurrets() {
+	public void PlayerDied() {
+		levelDeaths++;
+		totalDeaths++;
+	}
+
+	public void BeatLevel() {
+		levelDeaths = 0;
+		levelNum = 1;
+		GenerateLevel();
+	}
+
+	public int CalculateNumberOfNewTurrets() {
 		// to be implemented
 		return 8;
 	}
