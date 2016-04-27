@@ -56,8 +56,12 @@ public class GA {
 		hallOfFame = new List<Individual>();
 		deadPopulation = new List<Individual>();
 		fitnessFunction = new PlayerDistFitness();
+	}
+
+	public void StartGA() {
 		InitializeVariables();
 		InitializePopulation();
+		SendNextWave();
 	}
 
 	private void InitializeVariables() { // TODO :: Fill In Rates

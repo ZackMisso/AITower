@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ElevatorDoorControl : MonoBehaviour {
   public float animationTime = 1.0f;
-  public Vector3 openPosition = new Vector3();
-  public Vector3 closePosition = new Vector3();
+  public float openXPosition = 0.0f;
+  public float closeXPosition = 0.0f;
   private float animationStart = 0.0f;
   private bool isClosing = false;
   private bool isOpening = false;
@@ -33,24 +33,26 @@ public class ElevatorDoorControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     if(isOpening) {
-      Vector3 move = closePosition - openPosition;
+      float move = openXPosition - closeXPosition;
       float dt = (Time.time - animationStart) / animationTime;
       if(dt>=1.0f) {
         dt = 1.0f;
         isOpening = false;
         isClosed = false; // probably redundant
       }
-      gameObject.transform.position = closePosition + move * dt;
+      transform.position = new Vector3(closeXPosition + move * dt,transform.position.y,transform.position.z);
     }
     if(isClosing) {
-      Vector3 move = openPosition - closePosition;
+      float move = closeXPosition - openXPosition;
+      //float move = openXPosition - closeXPosition;
       float dt = (Time.time - animationStart) / animationTime;
       if(dt>=1.0f) {
         dt = 1.0f;
         isClosing = false;
         isClosed = true;
       }
-      gameObject.transform.position = closePosition + move * dt;
+      //transform.position = new Vector3(closeXPosition + move * dt,transform.position.y,transform.position.z);
+      transform.position = new Vector3(openXPosition + move * dt,transform.position.y,transform.position.z);
     }
   }
 }

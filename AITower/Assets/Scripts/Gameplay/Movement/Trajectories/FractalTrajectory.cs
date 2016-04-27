@@ -2,15 +2,11 @@
 using System.Collections;
 
 public class FractalTrajectory : Trajectory {
+	public Vector3 currentDir;
+	public float angle = 30.0f;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+	void Start() {
+		currentDir = transform.forward;
 	}
 
 	public override void FollowTrajectory(Transform currentTransform,float time) {
