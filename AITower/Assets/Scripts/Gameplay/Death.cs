@@ -14,7 +14,10 @@ public class Death : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        if (transform.position.y < -50)
+        {
+            Die();
+        }
     }
 
     void OnTriggerEnter (Collider other)
@@ -23,6 +26,7 @@ public class Death : MonoBehaviour {
         {
             Die();
         }
+
     }
 
     void Die()
