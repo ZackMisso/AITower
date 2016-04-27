@@ -34,6 +34,15 @@ public class Death : MonoBehaviour {
         deathCount++;
         transform.position = startPosition;
         Debug.Log("Death Count: " + deathCount);
+
+		GameObject[] bullets = GameObject.FindGameObjectsWithTag("bulletDeath");
+		foreach (GameObject bullet in bullets) {
+			Destroy (bullet);
+		}
+		GameObject[] chasers = GameObject.FindGameObjectsWithTag("chaserDeath");
+		foreach (GameObject chaser in chasers) {
+			(chaser.GetComponent<ChaserController>()).Reset();
+		}
     }
 
     void OnGUI ()
