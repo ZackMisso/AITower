@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// TODO :: MAKE THIS TIME BASED
+
 public class ElevatorControl : MonoBehaviour {
 	public float endHeight = 20.0f;
 	private bool escalating = false;
@@ -14,8 +16,6 @@ public class ElevatorControl : MonoBehaviour {
 }
 
 	void OnTriggerEnter(Collider other) {
-		//transform.position = new Vector3(transform.position.x,transform.position.y+1,transform.position.z);
-		//Debug.Log("Triggered");
 		escalating = true;
 	}
 }

@@ -17,5 +17,12 @@ public class BulletController : MonoBehaviour {
     startTime = Time.time;
   }
 
-  // ToDo :: add Collision Code
+  void OnTriggerEnter(Collider other) {
+    // Just in Case there is some multithreading issues
+    Debug.Log("AHAHAHA");
+    moving = false;
+    trajectory = null;
+    moving = false;
+    Destroy(gameObject);
+  }
 }
