@@ -16,4 +16,13 @@ public class FractalTrajectory : Trajectory {
 	public override void FollowTrajectory(Transform currentTransform,float time) {
 		// to be implemented
 	}
+
+	// GA Methods
+	public override void Mutate() {
+		// to be implemented
+	}
+
+	public override void Crossover(Trajectory other) {
+		// to be implemented
+	}
 }

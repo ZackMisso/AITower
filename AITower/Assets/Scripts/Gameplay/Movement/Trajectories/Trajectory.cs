@@ -9,8 +9,8 @@ public abstract class Trajectory : MonoBehaviour {
 	public Vector3 lineOfSight = new Vector3();
 	public Vector3 initialPosition = new Vector3();
 	public bool followLineOfSight = false;
-	protected float startTime;
-	protected float lastUpdateTime;
+	//protected float startTime;
+	//protected float lastUpdateTime;
 	public float speed; // time to move one unit
 
 	//public void FixedUpdate() {
@@ -25,4 +25,7 @@ public abstract class Trajectory : MonoBehaviour {
 	//}
 
 	public abstract void FollowTrajectory(Transform currentTransform,float time);
+	// GA Methods
+	public abstract void Mutate();
+	public abstract void Crossover(Trajectory other);
 }

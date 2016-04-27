@@ -12,4 +12,13 @@ public class LineTrajectory : Trajectory {
     float newZ = currentTransform.position.z + lineOfSight.z * speed;
     currentTransform.position = new Vector3(newX,newY,newZ);
 	}
+
+	// GA Methods
+	public override void Mutate() {
+		// to be implemented
+	}
+
+	public override void Crossover(Trajectory other) {
+		// to be implemented
+	}
 }
