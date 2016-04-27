@@ -16,6 +16,9 @@ public class ElevatorControl : MonoBehaviour {
 }
 
 	void OnTriggerEnter(Collider other) {
-		escalating = true;
+        if (other.gameObject.tag == "Player")
+        {
+            escalating = true;
+        }
 	}
 }
