@@ -24,5 +24,5 @@ public abstract class Trajectory : MonoBehaviour {
 	//	initialPosition = currentTransform.position;
 	//}
 
-	public abstract void FollowTrajectory(Transform currentTransform);
+	public abstract void FollowTrajectory(Transform currentTransform,float time);
 }

@@ -13,7 +13,7 @@ public class FractalTrajectory : Trajectory {
 
 	}
 
-	public override void FollowTrajectory(Transform currentTransform) {
+	public override void FollowTrajectory(Transform currentTransform,float time) {
 		// to be implemented
 	}
 }

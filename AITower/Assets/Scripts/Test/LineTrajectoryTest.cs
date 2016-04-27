@@ -10,6 +10,6 @@ public class LineTrajectoryTest : MonoBehaviour {
 
 	void Update() {
     Debug.Log("Line Trajectory Test");
-    trajectory.FollowTrajectory(transform);
+    trajectory.FollowTrajectory(transform,Time.time);
   }
 }

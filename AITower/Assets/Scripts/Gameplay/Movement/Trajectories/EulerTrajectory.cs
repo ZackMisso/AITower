@@ -2,18 +2,17 @@
 using System.Collections;
 
 public class EulerTrajectory : Trajectory {
+	public float acceleration = -0.1f;
+	public float startingYVelocity = 0.1f;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
 	void Update () {
-
+		lineOfSight = transform.forward;
 	}
 
-	public override void FollowTrajectory(Transform currentTransform) {
-		// to be implemented
+	public override void FollowTrajectory(Transform currentTransform,float time) {
+		float newX = currentTransform.position.x + lineOfSight.x * speed;
+    float newY = currentTransform.position.y + (startingYVelocity + time*acceleration);
+    float newZ = currentTransform.position.z + lineOfSight.z * speed;
+		currentTransform.position = new Vector3(newX,newY,newZ);
 	}
 }

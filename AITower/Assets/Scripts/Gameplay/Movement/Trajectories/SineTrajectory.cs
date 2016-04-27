@@ -6,7 +6,7 @@ public class SineTrajectory : Trajectory {
 	public float amplitude = 1.0f;
 	public float length = 0.05f;
 
-	public override void FollowTrajectory(Transform currentTransform) {
+	public override void FollowTrajectory(Transform currentTransform,float time) {
 		float length = Time.time - startTime;
 		float newX = initialPosition.x + lineOfSight.x*length;
 		float newY = initialPosition.y + lineOfSight.y*length;

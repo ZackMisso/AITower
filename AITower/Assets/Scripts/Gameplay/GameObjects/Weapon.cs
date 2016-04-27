@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
     BulletController bc = bullet.GetComponent<BulletController>();
     bc.trajectory = trajectory;
     bullet.transform.position = transform.position;
-    bc.moving = true;
+    bc.StartMoving();
     // check if the weapon should reload
     if(shotsRemaining == 0) {
       timeReloadStart = Time.time;
