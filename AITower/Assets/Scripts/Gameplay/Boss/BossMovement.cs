@@ -75,16 +75,7 @@ public class BossMovement : MonoBehaviour {
 				delayingInner = true;
 			} else {
 				animatingInner = true;
-				float rotX = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				float rotY = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				float rotZ = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				if(Random.value < 0.5f)
-					rotX = -rotX;
-				if(Random.value < 0.5f)
-					rotY = -rotY;
-				if(Random.value < 0.5f)
-					rotZ = -rotZ;
-				innerAnimation = new Vector3(rotX,rotY,rotZ);
+				innerAnimation = getRandomRotation();
 			}
 			innerAnimationStart = Time.time;
 		}
@@ -95,16 +86,7 @@ public class BossMovement : MonoBehaviour {
 				delayingOuter = true;
 			} else {
 				animatingOuter = true;
-				float rotX = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				float rotY = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				float rotZ = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
-				if(Random.value < 0.5f)
-					rotX = -rotX;
-				if(Random.value < 0.5f)
-					rotY = -rotY;
-				if(Random.value < 0.5f)
-					rotZ = -rotZ;
-				outerAnimation = new Vector3(rotX,rotY,rotZ);
+				outerAnimation = getRandomRotation();
 			}
 			outerAnimationStart = Time.time;
 		}
@@ -120,5 +102,18 @@ public class BossMovement : MonoBehaviour {
 	private void endOuterAnimation() {
 		animatingOuter = false;
 		delayingOuter = false;
+	}
+
+	private Vector3 getRandomRotation() {
+		float rotX = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
+		float rotY = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
+		float rotZ = Random.value * (maxAngleChange - minAngleChange) + minAngleChange;
+		if(Random.value < 0.5f)
+			rotX = -rotX;
+		if(Random.value < 0.5f)
+			rotY = -rotY;
+		if(Random.value < 0.5f)
+			rotZ = -rotZ;
+		return new Vector3(rotX,rotY,rotZ);
 	}
 }
