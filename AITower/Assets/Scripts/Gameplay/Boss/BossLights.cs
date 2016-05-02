@@ -17,7 +17,7 @@ public class BossLights : MonoBehaviour {
 
 	private int currentColorIndex = 2; // blue
 	private int nextColorIndex;
-	private float minAngle = 70.0f;
+	public float minAngle = 70.0f;
 	public float maxAngle = 150.0f;
 	private Color prevColor;
 
