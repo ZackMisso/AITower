@@ -6,13 +6,18 @@ public class SineTrajectory : Trajectory {
 	public float amplitude = 1.0f;
 	public float crest = 1.0f;
 
+	void Update() {
+		lineOfSight = transform.forward;
+		initialPosition = transform.position + 2.0f*transform.forward;
+	}
+
 	public override void FollowTrajectory(Transform currentTransform,float time) {
-		float newX = initialPosition.x + lineOfSight.x * speed;
-		float newY = initialPosition.y + lineOfSight.y * speed;
-		float newZ = initialPosition.z + lineOfSight.z * speed;
-    float dX = sineMap.x * Mathf.Sin(Time.time/crest) * amplitude;
-    float dY = sineMap.y * Mathf.Sin(Time.time/crest) * amplitude;
-    float dZ = sineMap.z * Mathf.Sin(Time.time/crest) * amplitude;
+		float newX = initialPosition.x + lineOfSight.x * speed * time;
+		float newY = initialPosition.y + lineOfSight.y * speed * time;
+		float newZ = initialPosition.z + lineOfSight.z * speed * time;
+    float dX = sineMap.x * Mathf.Sin(time/crest) * amplitude;
+    float dY = sineMap.y * Mathf.Sin(time/crest) * amplitude;
+    float dZ = sineMap.z * Mathf.Sin(time/crest) * amplitude;
     currentTransform.position = new Vector3(newX+dX,newY+dY,newZ+dZ);
 	}
 

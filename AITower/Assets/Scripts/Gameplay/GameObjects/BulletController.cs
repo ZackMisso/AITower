@@ -19,8 +19,7 @@ public class BulletController : MonoBehaviour {
 
   void OnTriggerEnter(Collider other) {
     // Just in Case there is some multithreading issues
-    Debug.Log("AHAHAHA");
-    moving = false;
+    //Debug.Log("AHAHAHA");
     trajectory = null;
     moving = false;
     Destroy(gameObject);

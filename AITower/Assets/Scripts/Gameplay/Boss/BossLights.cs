@@ -39,6 +39,7 @@ public class BossLights : MonoBehaviour {
 		startTime = 0.0f;
 		rotatingLights = false;
 		changingColor = false;
+		UpdateColors(prevColor);
 	}
 
 	// inefficient but i have a lot on my plate so it can be fixed later
