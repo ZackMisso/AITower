@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour {
     GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
     BulletController bc = bullet.GetComponent<BulletController>();
     bc.trajectory = trajectory;
-    bullet.transform.position = transform.position;
+    bullet.transform.position = transform.position + 2.0f*transform.forward;
     bc.StartMoving();
     // check if the weapon should reload
     if(shotsRemaining == 0) {
