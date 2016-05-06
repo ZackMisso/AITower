@@ -8,10 +8,14 @@ public class ChaserController : MonoBehaviour
 	public Vector3 startPosition;
 	public float tetherDistance;
 
+	public Material lineMaterial;
+
 	// Use this for initialization
 	void Start ()
 	{
 		transform.position = startPosition;
+		LineRenderer lineRenderer = GetComponent<LineRenderer> ();
+		lineRenderer.SetPosition (0, startPosition);
 	}
 	
 	// Update is called once per frame
@@ -32,6 +36,9 @@ public class ChaserController : MonoBehaviour
 			startDifference.y = 0;
 			transform.position = startPosition + startDifference * tetherDistance;
 		}
+
+		LineRenderer lineRenderer = GetComponent<LineRenderer> ();
+		lineRenderer.SetPosition (1, transform.position);
 
 	}
 
