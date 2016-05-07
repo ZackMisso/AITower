@@ -41,7 +41,9 @@ public class Death : MonoBehaviour {
 		}
 		GameObject[] chasers = GameObject.FindGameObjectsWithTag("chaserDeath");
 		foreach (GameObject chaser in chasers) {
-			(chaser.GetComponent<ChaserController>()).Reset();
+			if ((chaser.GetComponent<ChaserController> ())) {
+				(chaser.GetComponent<ChaserController> ()).Reset ();
+			}
 		}
     }
 
