@@ -35,7 +35,7 @@ public class PGSystem : MonoBehaviour {
 		levelNum++;
 		Debug.Log("Generating Level");
 		int turrets = CalculateNumberOfNewTurrets();
-		for(int i=0;i<turrets;i++) {
+		for(int i=0;i<0;i++) {
 			Debug.Log("Generating Turret");
 			float xpos = Random.value - 0.5f;
 			float zpos = Random.value - 0.5f;
