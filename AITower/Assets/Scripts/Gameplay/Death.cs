@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Death : MonoBehaviour {
+  public PGSystem pgRef = null;
   public FPSWalker walker = null;
   public float deathDelay = 1.0f;
   private float deathStart = 0.0f;
@@ -17,6 +18,9 @@ public class Death : MonoBehaviour {
     style.alignment = TextAnchor.MiddleCenter;
     if(walker == null) {
       Debug.Log("Error.. Death Script Needs FPS Walker");
+    }
+    if(pgRef == null) {
+      Debug.Log("Error.. Death Script Needs Ref to PGSystem");
     }
   }
 
@@ -44,6 +48,7 @@ public class Death : MonoBehaviour {
 
   void Die()
   {
+    pgRef.PlayerDied();
     deathCount++;
     transform.position = startPosition;
     Debug.Log("Death Count: " + deathCount);
