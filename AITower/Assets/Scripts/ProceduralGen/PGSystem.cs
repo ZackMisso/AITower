@@ -66,14 +66,14 @@ public class PGSystem : MonoBehaviour {
     private float CalculateBSChance()
     {
         if (levelNum == 0)
-            return 15.0f;
+            return 10.0f;
         else
-            return Mathf.Max(2.0f + (8.0f - totalDeaths), 0.0f);
+            return Mathf.Max(1.0f + (4.0f - totalDeaths), 0.0f);
     }
 
     private float CalculateTSChance()
     {
-        return levelNum * 2.0f - Mathf.Min(totalDeaths / 3.0f, 10);
+        return levelNum - Mathf.Min(totalDeaths / 3.0f, 10.0f);
     }
 
 	public int CalculateNumberOfNewTurrets() {
