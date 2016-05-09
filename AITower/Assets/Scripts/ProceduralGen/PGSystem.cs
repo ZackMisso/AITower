@@ -51,21 +51,6 @@ public class PGSystem : MonoBehaviour {
             }
         }
 
-		//levelNum++;
-		//Debug.Log("Generating Level");
-		//int turrets = CalculateNumberOfNewTurrets();
-		//for(int i=0;i<0;i++) {
-		//	Debug.Log("Generating Turret");
-		//	float xpos = Random.value - 0.5f;
-		//	float zpos = Random.value - 0.5f;
-		//	float angle = Random.value * 360;
-		//	xpos *= 37;
-		//	zpos *= 37;
-		//	GameObject bullet = (GameObject)Instantiate(Resources.Load("Turret"));
-		//	bullet.transform.position = new Vector3(xpos,1.0f,zpos);
-		//	bullet.transform.rotation = Quaternion.AngleAxis(angle,Vector3.up);
-		//}
-		// to be impelemented
 	}
 
 	public void PlayerDied() {
@@ -81,12 +66,15 @@ public class PGSystem : MonoBehaviour {
 
     private float CalculateBSChance()
     {
-        return 10.0f;
+        if (levelNum == 0)
+            return 15.0f;
+        else
+            return Mathf.Max(2.0f + (8.0f - totalDeaths), 0.0f);
     }
 
     private float CalculateTSChance()
     {
-        return 5.0f;
+        return levelNum * 2.0f - Mathf.Min(totalDeaths / 3.0f, 10);
     }
 
 	public int CalculateNumberOfNewTurrets() {
