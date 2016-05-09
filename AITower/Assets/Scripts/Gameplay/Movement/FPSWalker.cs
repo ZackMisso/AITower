@@ -7,6 +7,7 @@ public class FPSWalker : MonoBehaviour {
 	public float stickToGroundForce = -1.0f; // Prevents player from falling through ground
 	private float currentYVelocity = 0.0f;
 	private bool canJump = true;
+	private float prevHeight = 0.0f;
 
 	private CharacterController characterController;
 	private MouseLook mouseLook;
@@ -28,6 +29,10 @@ public class FPSWalker : MonoBehaviour {
 	}
 
 	public void FixedUpdate() {
+		if(prevHeight == gameObject.transform.y) {
+			canJump = true;
+		}
+		prevHeight = gameObject.transform.y;
 		currentYVelocity += stickToGroundForce*Time.fixedDeltaTime;
 		if(currentYVelocity < 0.0f && gameObject.transform.position.y < 1.2f) {
 			canJump = true;
@@ -49,13 +54,6 @@ public class FPSWalker : MonoBehaviour {
 		if (characterController)
 		{
 			characterController.Move(moveDirection * Time.fixedDeltaTime);
-		}
-	}
-
-	void OnCollisionEnter(Collision other) {
-		if(other.gameObject.tag == "ground") {
-			canJump = true;
-			Debug.Log("What Is Ground");
 		}
 	}
 }
