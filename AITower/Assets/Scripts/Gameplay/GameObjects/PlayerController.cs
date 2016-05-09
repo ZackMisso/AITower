@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour {
     }
     if(pgRef == null) {
       Debug.Log("PGSystem Must Be Linked with Player");
+    } else {
+      pgRef.GenerateLevel();
     }
-    pgRef.GenerateLevel();
-    }
+  }
 
     void Update() {
     // to be implemented
