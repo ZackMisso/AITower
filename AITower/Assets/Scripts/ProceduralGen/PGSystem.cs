@@ -19,7 +19,6 @@ public class PGSystem : MonoBehaviour {
 	// level bounds 37 to -37
 	public void GenerateLevel() {
         Debug.Log("Generating Level");
-        levelNum++;
 
         int gridSize = 10;
         GameObject[,] grid = new GameObject[gridSize,gridSize];
@@ -44,7 +43,7 @@ public class PGSystem : MonoBehaviour {
                     place = true;
                 }
                 if (place)
-                { 
+                {
                     grid[i, j].transform.position = new Vector3(10 * (i - (gridSize / 2)) + 5, 0.0f, 10 * (j - (gridSize / 2)) + 5);
                     grid[i, j].transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
                 }
@@ -60,7 +59,7 @@ public class PGSystem : MonoBehaviour {
 
 	public void BeatLevel() {
 		levelDeaths = 0;
-		levelNum = 1;
+		levelNum++;
 		GenerateLevel();
 	}
 

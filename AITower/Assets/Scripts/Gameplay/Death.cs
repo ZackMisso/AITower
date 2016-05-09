@@ -10,7 +10,8 @@ public class Death : MonoBehaviour {
   public bool delaying = false;
 
   public int deathCount = 0;
-  public Vector3 startPosition = new Vector3(0, 1, 0);
+  public Vector3 startPositionOne = new Vector3(0, 1, -44);
+  public Vector3 startPositionTwo = new Vector3(0, 1, 44);
   private GUIStyle style = new GUIStyle();
 
   void Start ()
@@ -50,7 +51,13 @@ public class Death : MonoBehaviour {
   {
     pgRef.PlayerDied();
     deathCount++;
-    transform.position = startPosition;
+    if(pgRef.levelNum % 2 == 0) {
+      Debug.Log("One");
+      transform.position = startPositionOne;
+    } else {
+      Debug.Log("Two");
+      transform.position = startPositionTwo;
+    }
     Debug.Log("Death Count: " + deathCount);
     // pause movement
     if(!delaying) {
