@@ -29,7 +29,10 @@ public class FPSWalker : MonoBehaviour {
 
 	public void FixedUpdate() {
 		currentYVelocity += stickToGroundForce*Time.fixedDeltaTime;
-		Debug.Log(currentYVelocity);
+		if(currentYVelocity < 0.0f && gameObject.transform.position.y < 1.2f) {
+			canJump = true;
+		}
+		//Debug.Log(currentYVelocity);
 		if(currentYVelocity < -10.0f) {
 			currentYVelocity = -10.0f;
 		}
@@ -46,12 +49,6 @@ public class FPSWalker : MonoBehaviour {
 		if (characterController)
 		{
 			characterController.Move(moveDirection * Time.fixedDeltaTime);
-		}
-	}
-
-	void OnCollisionEnter(Collision collision) {
-		if(collision.gameObject.tag == "ground") {
-			canJump = true;
 		}
 	}
 }
