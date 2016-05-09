@@ -2,13 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class FPSWalker : MonoBehaviour {
-	[SerializeField] private float speed = 2.0f;
-	public float Speed
-	{
-		get { return speed; }
-		set { speed = value; }
-	}
-	[SerializeField] private float stickToGroundForce = 10.0f; // Prevents player from falling through ground
+	public float speed = 2.0f;
+	public float stickToGroundForce = 10.0f; // Prevents player from falling through ground
 	private CharacterController characterController;
 	private MouseLook mouseLook;
 	private Quaternion originalRotation;

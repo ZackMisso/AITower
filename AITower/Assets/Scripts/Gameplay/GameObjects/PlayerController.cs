@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
   // public variables
+  public PGSystem pgRef = null;
   public double health;
   public int ammo;
 
@@ -14,10 +15,12 @@ public class PlayerController : MonoBehaviour {
     if(weapon == null) {
       Debug.Log("Player Object Must be Given a Weapon");
     }
-    PGSystem.Initialize();
-    PGSystem pg = PGSystem.GetInstance();
-    pg.GenerateLevel();
+    if(pgRef == null) {
+      Debug.Log("PGSystem Must Be Linked with Player");
+    } else {
+      pgRef.GenerateLevel();
     }
+  }
 
     void Update() {
     // to be implemented
