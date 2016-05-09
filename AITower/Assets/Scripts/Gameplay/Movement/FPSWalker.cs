@@ -51,4 +51,11 @@ public class FPSWalker : MonoBehaviour {
 			characterController.Move(moveDirection * Time.fixedDeltaTime);
 		}
 	}
+
+	void OnCollisionEnter(Collision other) {
+		if(other.gameObject.tag == "ground") {
+			canJump = true;
+			Debug.Log("What Is Ground");
+		}
+	}
 }
