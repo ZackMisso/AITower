@@ -1,26 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PGSystem : ScriptableObject {
-	////////////////////// GLOBAL FUNCTIONS ///////////////////////////
-
-	static PGSystem instance;
-
-	public static PGSystem GetInstance() {
-		return instance;
-	}
-
-	public static void Initialize() {
-		instance = new PGSystem();
-	}
-
-	///////////////////////////////////////////////////////////////////
-
-	private int levelDeaths;
-	private int totalDeaths;
-	private int numberGunShots;
-	private int levelNum;
-	private int prevNumberOfTurrets;
+public class PGSystem : MonoBehaviour {
+	public int levelDeaths;
+	public int totalDeaths;
+	public int numberGunShots;
+	public int levelNum;
+	public int prevNumberOfTurrets;
 
 	public PGSystem() {
 		levelDeaths = 0;
@@ -37,9 +23,9 @@ public class PGSystem : ScriptableObject {
 
         int gridSize = 10;
         GameObject[,] grid = new GameObject[gridSize,gridSize];
-
+				Debug.Log("Before Load");
         GameObject basicSquare = Resources.Load("GridPatterns/BasicSquare") as GameObject;
-
+				Debug.Log("After Load");
         for(int i = 1; i < gridSize - 1; ++i)
         {
             for(int j = 1; j < gridSize - 1; ++j)
