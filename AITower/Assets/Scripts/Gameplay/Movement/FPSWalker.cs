@@ -29,14 +29,11 @@ public class FPSWalker : MonoBehaviour {
 	}
 
 	public void FixedUpdate() {
-		if(prevHeight == gameObject.transform.position.y) {
+		if(prevHeight == gameObject.transform.position.y && currentYVelocity < 0.0f) {
 			canJump = true;
 		}
 		prevHeight = gameObject.transform.position.y;
 		currentYVelocity += stickToGroundForce*Time.fixedDeltaTime;
-		if(currentYVelocity < 0.0f && gameObject.transform.position.y < 1.2f) {
-			canJump = true;
-		}
 		//Debug.Log(currentYVelocity);
 		if(currentYVelocity < -10.0f) {
 			currentYVelocity = -10.0f;
