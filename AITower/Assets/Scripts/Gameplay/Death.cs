@@ -52,13 +52,10 @@ public class Death : MonoBehaviour {
     pgRef.PlayerDied();
     deathCount++;
     if(pgRef.levelNum % 2 == 0) {
-      Debug.Log("One");
       transform.position = startPositionOne;
     } else {
-      Debug.Log("Two");
       transform.position = startPositionTwo;
     }
-    Debug.Log("Death Count: " + deathCount);
     // pause movement
     if(!delaying) {
       delaying = true;
