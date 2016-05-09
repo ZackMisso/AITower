@@ -4,20 +4,26 @@ using System.Collections;
 public class ChaserController : MonoBehaviour
 {
 	public float speed;
-	public GameObject player; //set this to the player
 	public Vector3 startPosition;
 	public float tetherDistance;
+
+	private GameObject player; //set this to the player
 
 	public Material lineMaterial;
 
 	// Use this for initialization
 	void Start ()
 	{
-		transform.position = startPosition;
+		startPosition += transform.position;
+		startPosition.y /= 2;
+		//transform.position = startPosition;
 		LineRenderer lineRenderer = GetComponent<LineRenderer> ();
-		Vector3 removeY = startPosition;
+		Vector3 removeY = transform.position;
 		removeY.y = 0;
 		lineRenderer.SetPosition (0, removeY);
+
+		//find the player and set the player object to it
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
