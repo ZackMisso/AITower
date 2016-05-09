@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ElevatorControl : MonoBehaviour {
+	public PGSystem pgRef = null;
 	public ElevatorControl otherElevator;
 	public ElevatorDoorControl firstDoor;
 	public ElevatorDoorControl secondDoor;
@@ -13,6 +14,9 @@ public class ElevatorControl : MonoBehaviour {
 
 	void Start() {
 		startPosition = gameObject.transform.position;
+		if(pgRef == null) {
+			Debug.Log("Error.. Elevator Control Needs Ref to PGSystem");
+		}
 	}
 
 	public void StartFloor() {
@@ -26,7 +30,8 @@ public class ElevatorControl : MonoBehaviour {
 	void Update () {
 		if(transform.position.y >= endHeight) {
 			escalating = false;
-			// CALL THE METHOD TO GENERATE NEXT LEVEL
+			pgRef.BeatLevel();
+			pgRef.GenerateLevel();
 			// move player and elevator back to start
 			float diff = transform.position.y - startPosition.y;
 			gameObject.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y - diff,gameObject.transform.position.z);
