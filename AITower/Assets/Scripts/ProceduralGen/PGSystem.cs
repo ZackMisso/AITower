@@ -7,6 +7,7 @@ public class PGSystem : MonoBehaviour {
 	public int numberGunShots;
 	public int levelNum;
 	public int prevNumberOfTurrets;
+	public bool isBoss = false;
 
 	public PGSystem() {
 		levelDeaths = 0;
@@ -18,6 +19,7 @@ public class PGSystem : MonoBehaviour {
 
 	// level bounds 37 to -37
 	public void GenerateLevel() {
+		if(!isBoss) {
         Debug.Log("Generating Level");
 
         int gridSize = 10;
@@ -49,7 +51,7 @@ public class PGSystem : MonoBehaviour {
                 }
             }
         }
-
+			}
 	}
 
 	public void PlayerDied() {
