@@ -87,6 +87,9 @@ public class GA : MonoBehaviour {
 	public void MakeIndividualDead(int id) {
 		Debug.Log("Making Individual Dead");
 		Individual ind = population[id];
+		if(ind.bullet == null) {
+			Debug.Log("Game Object is Null At Death!!!");
+		}
 		// calculate fitness
 		Vector3 dist = ind.bullet.transform.position - playerTransform.position;
 		ind.fitness = dist.sqrMagnitude;
@@ -94,14 +97,28 @@ public class GA : MonoBehaviour {
 		ind.bullet.transform.position = new Vector3(0.0f,-20.0f,0.0f);
 		// add individual to list of dead
 		deadPopulation.Add(ind);
-		Debug.Log("Dead Population: "+deadPopulation.Count);
+		if(deadPopulation[deadPopulation.Count-1].bullet == null) {
+			Debug.Log("WHAT THE ACTUAL FUCK IS THIS NOOOOOO"); // not here
+		}
+		//Debug.Log("Dead Population: "+deadPopulation.Count);
 		// if list of dead is > 40 in size then evolve and replace
 		if(deadPopulation.Count >= 40) {
 			Debug.Log("Clearing The Dead");
 			// sort the list of dead individuals by their fitness
-			Debug.Log("Sorting");
+			//Debug.Log("Sorting");
+			for(int i=0;i<deadPopulation.Count;i++) {
+				if(deadPopulation[i].bullet == null) {
+					Debug.Log("BEFORE SORT-WHAHAHAHA"); // here
+				}
+			}
 			deadPopulation = Individual.Sort(deadPopulation);
-			Debug.Log("Sorted");
+			for(int i=0;i<deadPopulation.Count;i++) {
+				if(deadPopulation[i].bullet == null) {
+					Debug.Log("WHAHAHAHA"); // here
+				}
+			}
+			//Debug.Log("Sorted");
+
 			for(int i=deadPopulation.Count-1;i>=0;i--) {
 				Debug.Log("Individual");
 				Individual individual = deadPopulation[i];
@@ -116,6 +133,9 @@ public class GA : MonoBehaviour {
 				}
 				// make the individual ready
 				readyPopulation.Add(individual);
+				if(individual.bullet == null) {
+					Debug.Log("Error IS HERE!!!");
+				}
 			}
 			Debug.Log("Clearing");
 			// empty dead list

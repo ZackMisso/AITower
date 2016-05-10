@@ -17,9 +17,6 @@ public class SineTrajectory : Trajectory {
 		float newX = initialPosition.x + lineOfSight.x * speed * time;
 		float newY = initialPosition.y + lineOfSight.y * speed * time;
 		float newZ = initialPosition.z + lineOfSight.z * speed * time;
-		if(crest == 0.0f) {
-			Debug.Log("Zero Error");
-		}
     float dX = sineMap.x * Mathf.Sin(time/crest) * amplitude;
     float dY = sineMap.y * Mathf.Sin(time/crest) * amplitude;
     float dZ = sineMap.z * Mathf.Sin(time/crest) * amplitude;

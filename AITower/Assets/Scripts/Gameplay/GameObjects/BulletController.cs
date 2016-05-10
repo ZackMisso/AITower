@@ -20,11 +20,11 @@ public class BulletController : MonoBehaviour {
     startTime = Time.time;
   }
 
-  void OnTriggerEnter(Collider other) {
+  //void OnTriggerEnter(Collider other) {
     // Just in Case there is some multithreading issues
     //Debug.Log("AHAHAHA");
-    trajectory = null;
-    moving = false;
-    Destroy(gameObject);
-  }
+    //trajectory = null;
+    //moving = false;
+    //Destroy(gameObject);
+  //}
 }
