@@ -18,26 +18,32 @@ public class BossController : MonoBehaviour {
 	void Update () {
     for(int i=0;i<5;i++) {
       ///////////////////// Test Code /////////////////////////////////////
-      GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
-      bullet.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,gameObject.transform.position.z);
-      float x = (Random.value - 0.5f) * 2.0f;
-      float y = Random.value * 0.5f - 0.8f;
-      float z = (Random.value - 0.5f) * 2.0f;
-      bullet.AddComponent<LineTrajectory>();
-      LineTrajectory tmp = bullet.GetComponent<LineTrajectory>();
-      tmp.lineOfSight = new Vector3(x,y,z);
+      //GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
+      //bullet.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,gameObject.transform.position.z);
+      //float x = (Random.value - 0.5f) * 2.0f;
+      //float y = Random.value * 0.5f - 0.8f;
+      //float z = (Random.value - 0.5f) * 2.0f;
+      //bullet.AddComponent<LineTrajectory>();
+      //LineTrajectory tmp = bullet.GetComponent<LineTrajectory>();
+      //tmp.lineOfSight = new Vector3(x,y,z);
       //Debug.Log(tmp.lineOfSight.y);
-      tmp.initialPosition = gameObject.transform.position;
-      tmp.speed = 0.3f;
-      tmp.isBoss = true;
+      //tmp.initialPosition = gameObject.transform.position;
+      //tmp.speed = 0.3f;
+      //tmp.isBoss = true;
       /////////////////////////////////////////////////////////////////////
       ///////////////////// Real Code /////////////////////////////////////
       //GameObject bullet = gaRef.GetNextIndividual();
-      /////////////////////////////////////////////////////////////////////
+      Individual bullet = gaRef.GetNextIndividual();
+      Debug.Log(bullet.trajectory.lineOfSight);
       if(bullet != null) {
-        BulletController bc = bullet.GetComponent<BulletController>();
+        bullet.trajectory.initialPosition = gameObject.transform.position;
+        bullet.bullet.transform.position = gameObject.transform.position;
+        Debug.Log(bullet.trajectory.lineOfSight);
+        /////////////////////////////////////////////////////////////////////
+
+        BulletController bc = bullet.bullet.GetComponent<BulletController>();
         bc.StartMoving();
-        bc.trajectory = tmp;
+        //bc.trajectory = bullet.trajectory;
       }
     }
   }

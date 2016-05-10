@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour {
   public int trajType;
   public bool gaControlled = false;
   private float startTime;
-  private bool moving = false;
+  public bool moving = false;
   // there will also be more things later like material and particle effect
 
 	void FixedUpdate() {

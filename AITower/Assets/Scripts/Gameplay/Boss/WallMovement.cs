@@ -3,6 +3,8 @@ using System.Collections;
 
 public class WallMovement : MonoBehaviour {
 	public Transform transform;
+	private Rigidbody rb = null;
+	public float speed;
 	public float start;
 	public float end;
 	public float singleTime = 20.0f;
@@ -10,6 +12,10 @@ public class WallMovement : MonoBehaviour {
 	public int direction; // 0 - pos z, 1 - neg z, 2 - pos x, 3 - neg x
 	public bool animating;
 	private bool isStart = true;
+
+	void Start() {
+		rb = GetComponent<Rigidbody>();
+	}
 
 	public void Reset() {
 		if(direction == 0) {
@@ -42,16 +48,20 @@ public class WallMovement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(animating) {
 			if(direction == 0) {
 				UpdatePosZ();
+				//rb.velocity = new Vector3(0.0f,0.0f,-1.0f);
 			} else if(direction == 1) {
 				UpdateNegZ();
+				//rb.velocity = new Vector3(0.0f,0.0f,1.0f);
 			} else if(direction == 2) {
 				UpdatePosX();
+				//rb.velocity = new Vector3(-1.0f,0.0f,0.0f);
 			} else if(direction == 3) {
 				UpdateNegX();
+				//rb.velocity = new Vector3(1.0f,0.0f,0.0f);
 			}
 		}
 	}

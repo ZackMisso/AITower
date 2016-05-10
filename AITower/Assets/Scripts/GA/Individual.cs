@@ -53,6 +53,11 @@ public class Individual {
 		bc = bullet.GetComponent<BulletController>();
 		bc.trajID = id;
 		bc.gaControlled = true;
+		bc.trajectory = trajectory;
+		if(trajectory == null) {
+			Debug.Log("Major Error");
+		}
+		Debug.Log("Setitng Up: " + trajectory.lineOfSight);
 	}
 
 	public void CleanBullet() {

@@ -22,6 +22,8 @@ public class DestroyBullet : MonoBehaviour {
     if(other.gameObject.tag == "bulletDeath") {
 			if(pgRef.isBoss) {
 				BulletController bc = other.gameObject.GetComponent<BulletController>();
+				bc.moving = false;
+				//bc.trajectory = null;
 				if(bc.gaControlled) {
 					gaRef.MakeIndividualDead(bc.trajID);
 				}

@@ -67,7 +67,7 @@ public class GA : MonoBehaviour {
 		//SendNextWave();
 	}
 
-	public GameObject GetNextIndividual() {
+	public Individual GetNextIndividual() {
 		if(readyPopulation.Count == 0) {
 			Debug.Log("Error... NOT ENOUGH POPULATION IN BOSS FIGHT");
 			return null;
@@ -76,8 +76,9 @@ public class GA : MonoBehaviour {
 		// It is possible that the beginning individuals never make it to the
 		// scene but the performance boost is worth it.
 		Individual toRet = readyPopulation[readyPopulation.Count-1];
+		Debug.Log("Getting Ind: "+toRet.trajectory.lineOfSight);
 		readyPopulation.RemoveAt(readyPopulation.Count-1);
-		return toRet.bullet;
+		return toRet;
 	}
 
 	// tells the GA that the parameter individual can now be used for future
@@ -143,7 +144,6 @@ public class GA : MonoBehaviour {
 		for(int i=0;i<800;i++) {
 			population.Add(new Individual(i));
 			CreateBullet(population[i]);
-			population[i].SetUpBullet();
 			readyPopulation.Add(population[i]);
 			//Debug.Log("Creating Bullet: " + i);
 		}
@@ -178,11 +178,14 @@ public class GA : MonoBehaviour {
 			CreateRandomLineTrajectory(population[k]);
 			k++;
 		}
+		for(int i=0;i<800;i++) {
+			population[i].SetUpBullet();
+		}
 	}
 
 	private Vector3 CreateRandomLineOfSight() {
 		float x = (Random.value - 0.5f) * 2.0f;
-		float y = Random.value * 0.5f - 0.8f;
+		float y = (Random.value * 0.5f) - 0.8f;
 		float z = (Random.value - 0.5f) * 2.0f;
 		Vector3 los = new Vector3(x,y,z);
 		los.Normalize();
@@ -219,6 +222,7 @@ public class GA : MonoBehaviour {
 		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
 		traj.speed = speed;
 		traj.lineOfSight = lineOfSight;
+		//Debug.Log(traj.lineOfSight);
 		// traj spacific data
 		traj.acceleration = Random.value * (constraints.EulerTrajectoryMaxAcceleration - constraints.EulerTrajectoryMinAcceleration) + constraints.EulerTrajectoryMinAcceleration;
 		traj.startingYVelocity = Random.value * (constraints.EulerTrajectoryMaxStartingYVelocity - constraints.EulerTrajectoryMinStartingYVelocity) + constraints.EulerTrajectoryMinStartingYVelocity;

@@ -8,17 +8,17 @@ using System.Collections;
 
 public class Constraints : MonoBehaviour {
   // Constraints for EulerTrajectory
-  public float EulerTrajectoryMaxAcceleration = 0.0f;
-  public float EulerTrajectoryMinAcceleration = 0.0f;
-  public float EulerTrajectoryMaxStartingYVelocity = 0.0f;
-  public float EulerTrajectoryMinStartingYVelocity = 0.0f;
+  public float EulerTrajectoryMaxAcceleration = -0.05f;
+  public float EulerTrajectoryMinAcceleration = -0.4f;
+  public float EulerTrajectoryMinStartingYVelocity = 0.09f;
+  public float EulerTrajectoryMaxStartingYVelocity = 0.4f;
   // Constraints for FractalTrajectory
   // Constraints for LineTrajectory
   // Constraints for SineTrajectory
-  public float SineTrajectoryMaxAmplitude = 0.0f;
-  public float SineTrajectoryMinAmplitude = 0.0f;
-  public float SineTrajectoryMaxCrest = 0.0f;
-  public float SineTrajectoryMinCrest = 0.0f;
+  public float SineTrajectoryMaxAmplitude = 2.0f;
+  public float SineTrajectoryMinAmplitude = 0.5f;
+  public float SineTrajectoryMaxCrest = 1.0f;
+  public float SineTrajectoryMinCrest = 0.04f;
   // Constraints for Trajectory
   public float TrajectoryMaxSpeed = 1.0f;
   public float TrajectoryMinSpeed = 0.1f;
