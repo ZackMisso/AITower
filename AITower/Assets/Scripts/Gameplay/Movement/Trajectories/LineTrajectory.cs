@@ -2,8 +2,12 @@ using UnityEngine;
 using System.Collections;
 
 public class LineTrajectory : Trajectory {
+	public bool isBoss = false;
+
 	void Update() {
-		lineOfSight = transform.forward;
+		if(!isBoss) {
+			lineOfSight = transform.forward;
+		}
 	}
 
 	public override void FollowTrajectory(Transform currentTransform,float time) {
