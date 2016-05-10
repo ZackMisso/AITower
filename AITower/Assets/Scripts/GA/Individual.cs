@@ -31,17 +31,6 @@ public class Individual {
 
 	public Individual(GameObject obj,int num) {
 		bullet = obj;
-		//BulletController bc = obj.GetComponent<BulletController>();
-		//if(bc.trajType = 1) {
-		//	trajectory = obj.GetComponent<LineTrajectory>();
-		//} else if(bc.trajType = 2) {
-		//	trajectory = obj.GetComponent<FractalTrajectory>();
-		//} else if(bc.trajType = 3) {
-		//	trajectory = obj.GetComponent<SineTrajectory>();
-		//} else if(bc.trajType = 4) {
-		//	trajectory = obj.GetComponent<EulerTrajectory>();
-		//}
-		//trajType = bc.trajType;
 		trajType = -1;
 		fitness = 0.0f;
 		waitingToFire = true;
@@ -57,23 +46,6 @@ public class Individual {
 		if(trajectory == null) {
 			Debug.Log("Major Error");
 		}
-		//Debug.Log("Setitng Up: " + trajectory.lineOfSight);
-	}
-
-	public void CleanBullet() {
-		//bullet.Destroy(trajectory); // not sure if this works or not
-		//trajectory = null;
-
-		/*if(bc.trajType == 1) {
-			Destroy(GetComponent<LineTrajectory>());
-		} else if(bc.trajType == 2) {
-			Destroy(GetComponent<FractalTrajectory>());
-		} else if(bc.trajType == 3) {
-			Destroy(GetComponent<SineTrajectory>());
-		} else if(bc.trajType == 4) {
-			Destroy(GetComponent<EulerTrajectory>());
-		}
-		*/
 	}
 
 	public static List<Individual> Sort(List<Individual> individuals) {
