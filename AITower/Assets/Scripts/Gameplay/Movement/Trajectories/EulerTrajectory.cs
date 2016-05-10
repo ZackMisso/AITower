@@ -19,18 +19,19 @@ public class EulerTrajectory : Trajectory {
 	}
 
 	// GA Methods
-	public override Trajectory Mutate() {
+	public override void Mutate(Constraints constraints) {
 		// to be implemented
-		return null;
 	}
 
-	public override Trajectory Crossover(Trajectory other) {
+	public override void PostCrossoverMutate(Constraints constraints) {
 		// to be implemented
-		return null;
 	}
 
-	public override Trajectory CreateRandomSelf() {
+	public override void Crossover(Constraints constraints,Trajectory other) {
 		// to be implemented
-		return null;
+	}
+
+	public override void CreateRandomSelf(Constraints constraints) {
+		// to be implemented
 	}
 }

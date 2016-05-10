@@ -5,6 +5,7 @@ public class BulletController : MonoBehaviour {
   public Trajectory trajectory;
   public int trajID;
   public int trajType;
+  public bool gaControlled = false;
   private float startTime;
   private bool moving = false;
   // there will also be more things later like material and particle effect
