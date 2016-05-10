@@ -5,7 +5,7 @@ public class WallMovement : MonoBehaviour {
 	public Transform transform;
 	public float start;
 	public float end;
-	public float singleTime = 10.0f;
+	public float singleTime = 20.0f;
 	public float startAnimationTime = 0.0f;
 	public int direction; // 0 - pos z, 1 - neg z, 2 - pos x, 3 - neg x
 	public bool animating;

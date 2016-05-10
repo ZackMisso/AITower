@@ -184,7 +184,9 @@ public class GA : MonoBehaviour {
 		float x = (Random.value - 0.5f) * 2.0f;
 		float y = Random.value * 0.5f - 0.8f;
 		float z = (Random.value - 0.5f) * 2.0f;
-		return new Vector3(x,y,z);
+		Vector3 los = new Vector3(x,y,z);
+		los.Normalize();
+		return los;
 	}
 
 	private void CleanIndividual(Individual individual) {

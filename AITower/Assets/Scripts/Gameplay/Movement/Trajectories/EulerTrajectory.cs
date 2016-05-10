@@ -20,15 +20,97 @@ public class EulerTrajectory : Trajectory {
 
 	// GA Methods
 	public override void Mutate(Constraints constraints) {
-		// to be implemented
+		float losX = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
+		float losY = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
+		float losZ = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
+		lineOfSight.x = losX;
+		lineOfSight.y = losY;
+		lineOfSight.z = losZ;
+		lineOfSight.Normalize();
+		speed += (Random.value - 0.5f) * 0.2f;
+		if(speed > constraints.TrajectoryMaxSpeed) {
+			speed = constraints.TrajectoryMaxSpeed;
+		}
+		if(speed < constraints.TrajectoryMinSpeed) {
+			speed = constraints.TrajectoryMinSpeed;
+		}
+		// trajectory specific mutation
+		startingYVelocity += (Random.value - 0.5f) * 0.2f * (constraints.EulerTrajectoryMaxStartingYVelocity-constraints.EulerTrajectoryMinStartingYVelocity);
+		acceleration += (Random.value - 0.5f) * 0.2f * (constraints.EulerTrajectoryMaxAcceleration-constraints.EulerTrajectoryMinAcceleration);
+		if(startingYVelocity > constraints.EulerTrajectoryMaxStartingYVelocity) {
+			startingYVelocity = constraints.EulerTrajectoryMaxStartingYVelocity;
+		}
+		if(startingYVelocity < constraints.EulerTrajectoryMinStartingYVelocity) {
+			startingYVelocity = constraints.EulerTrajectoryMinStartingYVelocity;
+		}
+		if(acceleration > constraints.EulerTrajectoryMaxAcceleration) {
+			acceleration = constraints.EulerTrajectoryMaxAcceleration;
+		}
+		if(acceleration < constraints.EulerTrajectoryMinAcceleration) {
+			acceleration = constraints.EulerTrajectoryMinAcceleration;
+		}
 	}
 
 	public override void PostCrossoverMutate(Constraints constraints) {
-		// to be implemented
+		startingYVelocity += (Random.value - 0.5f) * 0.2f * (constraints.EulerTrajectoryMaxStartingYVelocity-constraints.EulerTrajectoryMinStartingYVelocity);
+		acceleration += (Random.value - 0.5f) * 0.2f * (constraints.EulerTrajectoryMaxAcceleration-constraints.EulerTrajectoryMinAcceleration);
+		if(startingYVelocity > constraints.EulerTrajectoryMaxStartingYVelocity) {
+			startingYVelocity = constraints.EulerTrajectoryMaxStartingYVelocity;
+		}
+		if(startingYVelocity < constraints.EulerTrajectoryMinStartingYVelocity) {
+			startingYVelocity = constraints.EulerTrajectoryMinStartingYVelocity;
+		}
+		if(acceleration > constraints.EulerTrajectoryMaxAcceleration) {
+			acceleration = constraints.EulerTrajectoryMaxAcceleration;
+		}
+		if(acceleration < constraints.EulerTrajectoryMinAcceleration) {
+			acceleration = constraints.EulerTrajectoryMinAcceleration;
+		}
 	}
 
 	public override void Crossover(Constraints constraints,Trajectory other) {
-		// to be implemented
+		int num = Random.Range(0,6);
+		Vector3 newLos = new Vector3();
+		switch(num) {
+			case 0: {
+				newLos.x = other.lineOfSight.x;
+				newLos.y = lineOfSight.y;
+				newLos.z = lineOfSight.z;
+				break;
+			} case 1: {
+				newLos.x = lineOfSight.x;
+				newLos.y = other.lineOfSight.y;
+				newLos.z = lineOfSight.z;
+				break;
+			} case 2: {
+				newLos.x = lineOfSight.x;
+				newLos.y = lineOfSight.y;
+				newLos.z = other.lineOfSight.z;
+				break;
+			} case 3: {
+				newLos.x = other.lineOfSight.x;
+				newLos.y = other.lineOfSight.y;
+				newLos.z = lineOfSight.z;
+				break;
+			} case 4: {
+				newLos.x = other.lineOfSight.x;
+				newLos.y = lineOfSight.y;
+				newLos.z = other.lineOfSight.z;
+				break;
+			} case 5: {
+				newLos.x = lineOfSight.x;
+				newLos.y = other.lineOfSight.y;
+				newLos.z = other.lineOfSight.z;
+				break;
+			}
+			default: {
+				// does nothing
+				break;
+			}
+		}
+		newLos.Normalize();
+		lineOfSight = newLos;
+		speed += Random.value * (speed - other.speed);
 	}
 
 	public override void CreateRandomSelf(Constraints constraints) {
