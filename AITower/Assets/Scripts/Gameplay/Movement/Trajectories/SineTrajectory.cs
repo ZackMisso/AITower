@@ -7,8 +7,10 @@ public class SineTrajectory : Trajectory {
 	public float crest = 1.0f;
 
 	void Update() {
-		lineOfSight = transform.forward;
-		initialPosition = transform.position + 2.0f*transform.forward;
+		if(!isBoss) {
+			lineOfSight = transform.forward;
+			initialPosition = transform.position + 2.0f*transform.forward;
+		}
 	}
 
 	public override void FollowTrajectory(Transform currentTransform,float time) {

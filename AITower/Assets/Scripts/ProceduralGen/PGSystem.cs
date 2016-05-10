@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PGSystem : MonoBehaviour {
+	public GA gaRef;
 	public int levelDeaths;
 	public int totalDeaths;
 	public int numberGunShots;
@@ -51,6 +52,8 @@ public class PGSystem : MonoBehaviour {
                 }
             }
         }
+			} else {
+				gaRef.StartGA();
 			}
 	}
 

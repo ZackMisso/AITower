@@ -6,7 +6,9 @@ public class EulerTrajectory : Trajectory {
 	public float startingYVelocity = 0.1f;
 
 	void Update () {
-		lineOfSight = transform.forward;
+		if(!isBoss) {
+			lineOfSight = transform.forward;
+		}
 	}
 
 	public override void FollowTrajectory(Transform currentTransform,float time) {

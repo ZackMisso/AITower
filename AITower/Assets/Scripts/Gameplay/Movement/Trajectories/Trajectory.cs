@@ -9,6 +9,8 @@ public abstract class Trajectory : MonoBehaviour {
 	public Vector3 lineOfSight = new Vector3();
 	public Vector3 initialPosition = new Vector3();
 	public bool followLineOfSight = false;
+	public bool isBoss = false;
+	public int type; // used for boss fight 1-line 2-fractal 3-sine 4-euler
 	//protected float startTime;
 	//protected float lastUpdateTime;
 	public float speed; // time to move one unit

@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GA {
-	// class reference
-	private static GA instance;
+public class GA : MonoBehaviour {
+	public Constraints constraints;
 
 	// member variables
 	private List<Individual> population;
@@ -15,43 +14,37 @@ public class GA {
 	private FitnessFunction fitnessFunction;
 
 	// rates of mutation
-	private float eulerRate;
-	private float fractalRate;
-	private float lineRate;
-	private float sineRate;
+	public float eulerRate;
+	public float fractalRate;
+	public float lineRate;
+	public float sineRate;
 
 	// total made of each
-	private int eulerTotalCount;
-	private int fractalTotalCount;
-	private int lineTotalCount;
-	private int sineTotalCount;
+	public int eulerTotalCount;
+	public int fractalTotalCount;
+	public int lineTotalCount;
+	public int sineTotalCount;
 
 	// current made of each
-	private int eulerCount;
-	private int fractalCount;
-	private int lineCount;
-	private int sineCount;
+	public int eulerCount;
+	public int fractalCount;
+	public int lineCount;
+	public int sineCount;
 
 	// total fitness of each (used for adaptive rates)
-	private float eulerTotalFitness;
-	private float fractalTotalFitness;
-	private float lineTotalFitness;
-	private float sineTotalFitness;
+	public float eulerTotalFitness;
+	public float fractalTotalFitness;
+	public float lineTotalFitness;
+	public float sineTotalFitness;
 
 	// generation data
-	private int numLiveBullets;
+	public int numLiveBullets;
 
-	///////////////// static methods ////////////////////
-	static GA GetInstance() {
-		return instance;
-	}
-
-	static void Initialize() {
-		instance = new GA();
-	}
-	/////////////////////////////////////////////////////
-
-	public GA() {
+	void Start() {
+		constraints = GetComponent<Constraints>();
+		if(constraints == null) {
+			Debug.Log("Error.. GA Needs a Ref to Constraints");
+		}
 		population = new List<Individual>();
 		hallOfFame = new List<Individual>();
 		deadPopulation = new List<Individual>();
@@ -64,11 +57,16 @@ public class GA {
 		SendNextWave();
 	}
 
+	public int GetNextIndividual(GameObject bullet) {
+		// to be implemented
+		return -1;
+	}
+
 	private void InitializeVariables() { // TODO :: Fill In Rates
-		eulerRate = 0.0f;
+		eulerRate = 30.0f;
 		fractalRate = 0.0f;
-		lineRate = 0.0f;
-		sineRate = 0.0f;
+		lineRate = 40.0f;
+		sineRate = 30.0f;
 		eulerCount = 0;
 		fractalCount = 0;
 		lineCount = 0;

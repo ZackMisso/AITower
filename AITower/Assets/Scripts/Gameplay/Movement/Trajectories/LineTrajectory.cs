@@ -2,8 +2,6 @@ using UnityEngine;
 using System.Collections;
 
 public class LineTrajectory : Trajectory {
-	public bool isBoss = false;
-
 	void Update() {
 		if(!isBoss) {
 			lineOfSight = transform.forward;

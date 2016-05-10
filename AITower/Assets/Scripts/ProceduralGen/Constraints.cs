@@ -7,19 +7,6 @@ using System.Collections;
 // speed of a trajectory.
 
 public class Constraints : MonoBehaviour {
-  ////////////////////// GLOBAL FUNCTIONS ///////////////////////////
-
-  private static Constraints instance;
-
-  public static Constraints GetInstance() {
-    return instance;
-  }
-
-  public static void Initialize() {
-    instance = new Constraints();
-  }
-
-  ///////////////////////////////////////////////////////////////////
   // Constraints for EulerTrajectory
   public float EulerTrajectoryMaxAcceleration = 0.0f;
   public float EulerTrajectoryMinAcceleration = 0.0f;
