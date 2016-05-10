@@ -15,7 +15,7 @@ public class ChaserController : MonoBehaviour
 	void Start ()
 	{
 		startPosition += transform.position;
-		startPosition.y /= 2;
+		startPosition.y = 1;
 		//transform.position = startPosition;
 		LineRenderer lineRenderer = GetComponent<LineRenderer> ();
 		Vector3 removeY = transform.position;
