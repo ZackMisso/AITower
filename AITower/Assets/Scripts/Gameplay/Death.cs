@@ -4,6 +4,7 @@ using System.Collections;
 public class Death : MonoBehaviour {
   public PGSystem pgRef = null;
   public FPSWalker walker = null;
+  public WallController wallController = null;
   public float deathDelay = 1.0f;
   private float deathStart = 0.0f;
   public float previousSpeed = 0.0f;
@@ -50,6 +51,9 @@ public class Death : MonoBehaviour {
   void Die()
   {
     pgRef.PlayerDied();
+    if(wallController != null) {
+      wallController.Reset();
+    }
     deathCount++;
     if(pgRef.levelNum % 2 == 0) {
       transform.position = startPositionOne;
