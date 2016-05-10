@@ -7,6 +7,7 @@ public class BossController : MonoBehaviour {
   public Vector3 spawnPoint;
   public float startTime;
   public float lengthOfFight;
+  private int counter;
 
   void Start() {
     //system.isBoss = true;

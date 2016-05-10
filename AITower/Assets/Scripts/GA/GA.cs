@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GA : MonoBehaviour {
 	public Constraints constraints;
+	public Transform playerTransform;
 
 	// member variables
 	private List<Individual> population;
@@ -44,6 +45,9 @@ public class GA : MonoBehaviour {
 		constraints = GetComponent<Constraints>();
 		if(constraints == null) {
 			Debug.Log("Error.. GA Needs a Ref to Constraints");
+		}
+		if(playerTransform == null) {
+			Debug.Log("Error.. Player Transform Needs to Not be Null");
 		}
 		population = new List<Individual>();
 		hallOfFame = new List<Individual>();
@@ -86,6 +90,90 @@ public class GA : MonoBehaviour {
 		// first initialization
 		// to be implemented
 	}
+
+	private Vector3 createRandomLineOfSight() {
+		float x = (Random.value - 0.5f) * 2.0f;
+		float y = Random.value * 0.5f - 0.8f;
+		float z = (Random.value - 0.5f) * 2.0f;
+		return new Vector3(x,y,z);
+	}
+
+	private void CleanIndividual(Individual individual) {
+		int trajType = individual.trajType;
+		if(trajType == 1) {
+			Destroy(individual.bullet.GetComponent<LineTrajectory>());
+		} else if(trajType == 2) {
+			Destroy(individual.bullet.GetComponent<FractalTrajectory>());
+		} else if(trajType == 3) {
+			Destroy(individual.bullet.GetComponent<SineTrajectory>());
+		} else if(trajType == 4) {
+			Destroy(individual.bullet.GetComponent<EulerTrajectory>());
+		}
+	}
+
+	private void createRandomEulerTrajectory(Individual individual) {
+		individual.bullet.AddComponent<EulerTrajectory>();
+		EulerTrajectory traj = individual.bullet.GetComponent<EulerTrajectory>();
+		individual.trajType = 4;
+		// shared data
+		Vector3 lineOfSight = createRandomLineOfSight();
+		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
+		traj.speed = speed;
+		traj.lineOfSight = lineOfSight;
+		// traj spacific data
+		traj.acceleration = Random.value * (constraints.EulerTrajectoryMaxAcceleration - constraints.EulerTrajectoryMinAcceleration) + constraints.EulerTrajectoryMinAcceleration;
+		traj.startingYVelocity = Random.value * (constraints.EulerTrajectoryMaxStartingYVelocity - constraints.EulerTrajectoryMinStartingYVelocity) + constraints.EulerTrajectoryMinStartingYVelocity;
+		// set the trajectory
+		individual.trajectory = traj;
+	}
+
+	private void createRandomFractalTrajectory(Individual individual) {
+		individual.bullet.AddComponent<FractalTrajectory>();
+		FractalTrajectory traj = individual.bullet.GetComponent<FractalTrajectory>();
+		individual.trajType = 2;
+		// shared data
+		Vector3 lineOfSight = createRandomLineOfSight();
+		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
+		traj.speed = speed;
+		traj.lineOfSight = lineOfSight;
+		// traj spacific data
+		// have to implement fractal first
+		// set the trajectory
+		individual.trajectory = traj;
+	}
+
+	private void createRandomLineTrajectory(Individual individual) {
+		individual.bullet.AddComponent<LineTrajectory>();
+		LineTrajectory traj = individual.bullet.GetComponent<LineTrajectory>();
+		individual.trajType = 1;
+		// shared data
+		Vector3 lineOfSight = createRandomLineOfSight();
+		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
+		traj.speed = speed;
+		traj.lineOfSight = lineOfSight;
+		// traj spacific data
+		// there is none for line
+		// set the trajectory
+		individual.trajectory = traj;
+	}
+
+	private void createRandomSineTrajectory(Individual individual) {
+		individual.bullet.AddComponent<SineTrajectory>();
+		SineTrajectory traj = individual.bullet.GetComponent<SineTrajectory>();
+		individual.trajType = 3;
+		// shared data
+		Vector3 lineOfSight = createRandomLineOfSight();
+		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
+		traj.speed = speed;
+		traj.lineOfSight = lineOfSight;
+		// traj spacific data
+		traj.amplitude = Random.value * (constraints.SineTrajectoryMaxAmplitude - constraints.SineTrajectoryMinAmplitude) + constraints.SineTrajectoryMinAmplitude;
+		traj.crest = Random.value * (constraints.SineTrajectoryMaxCrest - constraints.SineTrajectoryMinCrest) + constraints.SineTrajectoryMinCrest;
+		// set the trajectory
+		individual.trajectory = traj;
+	}
+
+
 
 	void MakeDead(Individual individual) {
 		// tells the GA that the parameter individual can now be used for future

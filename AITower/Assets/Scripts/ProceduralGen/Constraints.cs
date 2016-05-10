@@ -20,8 +20,8 @@ public class Constraints : MonoBehaviour {
   public float SineTrajectoryMaxCrest = 0.0f;
   public float SineTrajectoryMinCrest = 0.0f;
   // Constraints for Trajectory
-  public float TrajectoryMaxSpeed = 0.0f;
-  public float TrajectoryMinSpeed = 0.0f;
+  public float TrajectoryMaxSpeed = 1.0f;
+  public float TrajectoryMinSpeed = 0.1f;
   // Constraints for GA
   public int GAMaxBulletsPerWave = 0;
   public int GAMinBulletsPerWave = 0;

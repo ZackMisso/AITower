@@ -9,34 +9,53 @@ using System.Collections;
 // about time spent replacing objects in lists
 
 public class Individual {
-	private Trajectory trajectory;
-	private float fitness;
-	private bool waitingToFire;
-	private bool dead;
+	public GameObject bullet;
+	public Trajectory trajectory;
+	public int trajType;
+	public float fitness;
+	public bool waitingToFire;
+	public bool dead;
 
 	public Individual() {
+		bullet = null;
 		trajectory = null;
 		fitness = 0.0f;
 		waitingToFire = false;
 		dead = false;
 	}
 
-	public Individual(Trajectory traj) {
-		trajectory = traj;
+	public Individual(GameObject obj) {
+		bullet = obj;
+		//BulletController bc = obj.GetComponent<BulletController>();
+		//if(bc.trajType = 1) {
+		//	trajectory = obj.GetComponent<LineTrajectory>();
+		//} else if(bc.trajType = 2) {
+		//	trajectory = obj.GetComponent<FractalTrajectory>();
+		//} else if(bc.trajType = 3) {
+		//	trajectory = obj.GetComponent<SineTrajectory>();
+		//} else if(bc.trajType = 4) {
+		//	trajectory = obj.GetComponent<EulerTrajectory>();
+		//}
+		//trajType = bc.trajType;
+		trajType = -1;
 		fitness = 0.0f;
 		waitingToFire = true;
 		dead = false;
 	}
 
-	// getter methods
-	public Trajectory getTrajectory() { return trajectory; }
-	public float getFitness() { return fitness; }
-	public bool getWaitingToFire() { return waitingToFire; }
-	public bool getDead() { return dead; }
+	public void CleanBullet() {
+		//bullet.Destroy(trajectory); // not sure if this works or not
+		trajectory = null;
 
-	// setter methods
-	public void setTrajectory(Trajectory param) { trajectory = param; }
-	public void setFitness(float param) { fitness = param; }
-	public void setWaitingToFire(bool param) { waitingToFire = param; }
-	public void setDead(bool param) { dead = param; }
+		/*if(bc.trajType == 1) {
+			Destroy(GetComponent<LineTrajectory>());
+		} else if(bc.trajType == 2) {
+			Destroy(GetComponent<FractalTrajectory>());
+		} else if(bc.trajType == 3) {
+			Destroy(GetComponent<SineTrajectory>());
+		} else if(bc.trajType == 4) {
+			Destroy(GetComponent<EulerTrajectory>());
+		}
+		*/
+	}
 }
