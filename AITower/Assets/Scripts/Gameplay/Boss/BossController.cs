@@ -34,13 +34,12 @@ public class BossController : MonoBehaviour {
       ///////////////////// Real Code /////////////////////////////////////
       //GameObject bullet = gaRef.GetNextIndividual();
       Individual bullet = gaRef.GetNextIndividual();
-      Debug.Log(bullet.trajectory.lineOfSight);
       if(bullet != null) {
         bullet.trajectory.initialPosition = gameObject.transform.position;
+        if(bullet.bullet == null)
+          Debug.Log("WHAT WHY IS OBJECT DEAD");
         bullet.bullet.transform.position = gameObject.transform.position;
-        Debug.Log(bullet.trajectory.lineOfSight);
         /////////////////////////////////////////////////////////////////////
-
         BulletController bc = bullet.bullet.GetComponent<BulletController>();
         bc.StartMoving();
         //bc.trajectory = bullet.trajectory;

@@ -76,7 +76,7 @@ public class GA : MonoBehaviour {
 		// It is possible that the beginning individuals never make it to the
 		// scene but the performance boost is worth it.
 		Individual toRet = readyPopulation[readyPopulation.Count-1];
-		Debug.Log("Getting Ind: "+toRet.trajectory.lineOfSight);
+		//Debug.Log("Getting Ind: "+toRet.trajectory.lineOfSight);
 		readyPopulation.RemoveAt(readyPopulation.Count-1);
 		return toRet;
 	}
@@ -85,6 +85,7 @@ public class GA : MonoBehaviour {
 	// mutations. Its Fitness gets evaluated and added to the list of dead
 	// sorted by its fitness
 	public void MakeIndividualDead(int id) {
+		Debug.Log("Making Individual Dead");
 		Individual ind = population[id];
 		// calculate fitness
 		Vector3 dist = ind.bullet.transform.position - playerTransform.position;
@@ -93,11 +94,16 @@ public class GA : MonoBehaviour {
 		ind.bullet.transform.position = new Vector3(0.0f,-20.0f,0.0f);
 		// add individual to list of dead
 		deadPopulation.Add(ind);
+		Debug.Log("Dead Population: "+deadPopulation.Count);
 		// if list of dead is > 40 in size then evolve and replace
-		if(deadPopulation.Count == 40) {
+		if(deadPopulation.Count >= 40) {
+			Debug.Log("Clearing The Dead");
 			// sort the list of dead individuals by their fitness
+			Debug.Log("Sorting");
 			deadPopulation = Individual.Sort(deadPopulation);
-			for(int i=39;i>=0;i++) {
+			Debug.Log("Sorted");
+			for(int i=deadPopulation.Count-1;i>=0;i--) {
+				Debug.Log("Individual");
 				Individual individual = deadPopulation[i];
 				if(i < 10) {
 					// only mutate :: to make things easier
@@ -111,9 +117,10 @@ public class GA : MonoBehaviour {
 				// make the individual ready
 				readyPopulation.Add(individual);
 			}
+			Debug.Log("Clearing");
+			// empty dead list
+			deadPopulation.Clear();
 		}
-		// empty dead list
-		deadPopulation.Clear();
 		// error check
 		if(deadPopulation.Count > 40) {
 			Debug.Log("Dead Population Is Too Big... Major Errors");
@@ -216,6 +223,7 @@ public class GA : MonoBehaviour {
 	private void CreateRandomEulerTrajectory(Individual individual) {
 		individual.bullet.AddComponent<EulerTrajectory>();
 		EulerTrajectory traj = individual.bullet.GetComponent<EulerTrajectory>();
+		traj.isBoss = true;
 		individual.trajType = 4;
 		// shared data
 		Vector3 lineOfSight = CreateRandomLineOfSight();
@@ -233,6 +241,7 @@ public class GA : MonoBehaviour {
 	private void CreateRandomFractalTrajectory(Individual individual) {
 		individual.bullet.AddComponent<FractalTrajectory>();
 		FractalTrajectory traj = individual.bullet.GetComponent<FractalTrajectory>();
+		traj.isBoss = true;
 		individual.trajType = 2;
 		// shared data
 		Vector3 lineOfSight = CreateRandomLineOfSight();
@@ -248,6 +257,7 @@ public class GA : MonoBehaviour {
 	private void CreateRandomLineTrajectory(Individual individual) {
 		individual.bullet.AddComponent<LineTrajectory>();
 		LineTrajectory traj = individual.bullet.GetComponent<LineTrajectory>();
+		traj.isBoss = true;
 		individual.trajType = 1;
 		// shared data
 		Vector3 lineOfSight = CreateRandomLineOfSight();
@@ -263,6 +273,7 @@ public class GA : MonoBehaviour {
 	private void CreateRandomSineTrajectory(Individual individual) {
 		individual.bullet.AddComponent<SineTrajectory>();
 		SineTrajectory traj = individual.bullet.GetComponent<SineTrajectory>();
+		traj.isBoss = true;
 		individual.trajType = 3;
 		// shared data
 		Vector3 lineOfSight = CreateRandomLineOfSight();

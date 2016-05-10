@@ -57,12 +57,12 @@ public class Individual {
 		if(trajectory == null) {
 			Debug.Log("Major Error");
 		}
-		Debug.Log("Setitng Up: " + trajectory.lineOfSight);
+		//Debug.Log("Setitng Up: " + trajectory.lineOfSight);
 	}
 
 	public void CleanBullet() {
 		//bullet.Destroy(trajectory); // not sure if this works or not
-		trajectory = null;
+		//trajectory = null;
 
 		/*if(bc.trajType == 1) {
 			Destroy(GetComponent<LineTrajectory>());
