@@ -14,7 +14,7 @@ public class BossController : MonoBehaviour {
   }
 
 	void Update () {
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<5;i++) {
       GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
       bullet.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,gameObject.transform.position.z);
       float x = (Random.value - 0.5f) * 2.0f;
@@ -25,7 +25,7 @@ public class BossController : MonoBehaviour {
       tmp.lineOfSight = new Vector3(x,y,z);
       Debug.Log(tmp.lineOfSight.y);
       tmp.initialPosition = gameObject.transform.position;
-      tmp.speed = 0.5f;
+      tmp.speed = 0.3f;
       tmp.isBoss = true;
       BulletController bc = bullet.GetComponent<BulletController>();
       bc.StartMoving();
