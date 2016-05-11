@@ -6,6 +6,7 @@ public class Death : MonoBehaviour {
   public FPSWalker walker = null;
   public BossController bossController = null;
   public WallController wallController = null;
+  public DeathPersist deathPersist = null;
   public float deathDelay = 1.0f;
   private float deathStart = 0.0f;
   public float previousSpeed = 0.0f;
@@ -25,6 +26,15 @@ public class Death : MonoBehaviour {
     }
     if(pgRef == null) {
       Debug.Log("Error.. Death Script Needs Ref to PGSystem");
+    }
+    GameObject deathPersistObj = GameObject.Find("DeathPersist");
+    if(deathPersistObj != null) {
+      deathPersist = deathPersistObj.GetComponent<DeathPersist>();
+      if(deathPersist == null) {
+        Debug.Log("Error.. Death Persist Object Exists but Its Script is Null");
+      }
+    } else {
+      Debug.Log("Error.. Death Persist Object Can Not Be Found");
     }
   }
 
@@ -86,10 +96,13 @@ public class Death : MonoBehaviour {
 	}
 
 	if(pgRef.isBoss){
+    deathPersist.bossDeaths++;
 		pgRef.resetGA();
     	bossController.ResetBoss();
 		walker.ResetMouseLook ();
-	}
+	} else {
+    deathPersist.pgDeaths++;
+  }
   }
 
   void OnGUI ()

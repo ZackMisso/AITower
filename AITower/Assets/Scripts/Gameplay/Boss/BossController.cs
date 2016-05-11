@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour {
   public PGSystem pgRef;
@@ -47,6 +48,7 @@ public class BossController : MonoBehaviour {
 
   public void DisplayEndState() {
     displayingEndState = true;
+    SceneManager.LoadScene("WinScene");
   }
 
   void OnGUI() {
