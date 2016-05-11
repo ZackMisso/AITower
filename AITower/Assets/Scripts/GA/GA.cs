@@ -102,7 +102,6 @@ public class GA : MonoBehaviour {
 		deadPopulation.Add(ind);
 		// if list of dead is > 40 in size then evolve and replace
 		if(deadPopulation.Count >= 40) {
-			Debug.Log("BLAH");
 			// sort the list of dead individuals by their fitness
 			deadPopulation = Individual.Sort(deadPopulation);
 			for(int i=deadPopulation.Count-1;i>=0;i--) {
