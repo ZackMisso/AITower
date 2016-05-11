@@ -110,7 +110,7 @@ public class PGSystem : MonoBehaviour {
 	public void PlayerDied() {
 		levelDeaths++;
 		totalDeaths++;
-        if(levelDeaths > 5)
+        if(levelDeaths > 5 && !isBoss)
         {
             levelDeaths = 0;
             GenerateLevel();
