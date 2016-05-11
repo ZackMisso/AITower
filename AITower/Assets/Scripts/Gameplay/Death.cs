@@ -89,6 +89,8 @@ public class Death : MonoBehaviour {
     GUI.Box(new Rect(5, Screen.height - 30,80,25), death_string, style);
 
 	string level_string = "level " + pgRef.levelNum.ToString();
-		GUI.Box(new Rect(Screen.width - 75, Screen.height - 30,80,25), level_string, style);
+	if (pgRef.levelNum >= 10)
+		level_string = "final boss";
+	GUI.Box(new Rect(Screen.width - 75, Screen.height - 30,80,25), level_string, style);
   }
 }

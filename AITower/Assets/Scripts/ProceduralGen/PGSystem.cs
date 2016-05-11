@@ -113,11 +113,13 @@ public class PGSystem : MonoBehaviour {
 	}
 
 	public void BeatLevel() {
-		if (levelNum >= 9) {
-			SceneManager.LoadScene ("BossTest");
-		}
 		levelDeaths = 0;
 		levelNum++;
+
+		if (levelNum >= 10) {
+			SceneManager.LoadScene ("BossTest");
+		}
+
 		GenerateLevel();
 	}
 
