@@ -28,7 +28,7 @@ public class PGSystem : MonoBehaviour {
 		levelDeaths = 0;
 		totalDeaths = 0;
 		numberGunShots = 0;
-		levelNum=0;
+		//levelNum=0;
 		prevNumberOfTurrets=0;
         grid = new GameObject[gridSize, gridSize];
     }
@@ -105,6 +105,9 @@ public class PGSystem : MonoBehaviour {
 	public void PlayerDied() {
 		levelDeaths++;
 		totalDeaths++;
+		if (levelNum >= 10) {
+			gaRef.PlayerDied ();
+		}
         if(levelDeaths > 5)
         {
             levelDeaths = 0;
@@ -117,10 +120,11 @@ public class PGSystem : MonoBehaviour {
 		levelNum++;
 
 		if (levelNum >= 10) {
+			isBoss = true;
 			SceneManager.LoadScene ("BossTest");
+		} else {
+			GenerateLevel ();
 		}
-
-		GenerateLevel();
 	}
 
     private void Place(GameObject obj, int num)

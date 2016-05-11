@@ -58,6 +58,7 @@ public class Death : MonoBehaviour {
     deathCount++;
 	if (pgRef.levelNum >= 10) {
 		transform.position = startPositionBoss;
+		
 	}
     else if(pgRef.levelNum % 2 == 0) {
       transform.position = startPositionOne;
@@ -72,16 +73,16 @@ public class Death : MonoBehaviour {
       deathStart = Time.time;
     }
 
-		GameObject[] bullets = GameObject.FindGameObjectsWithTag("bulletDeath");
-		foreach (GameObject bullet in bullets) {
-			Destroy (bullet);
+	GameObject[] bullets = GameObject.FindGameObjectsWithTag("bulletDeath");
+	foreach (GameObject bullet in bullets) {
+		Destroy (bullet);
+	}
+	GameObject[] chasers = GameObject.FindGameObjectsWithTag("chaserDeath");
+	foreach (GameObject chaser in chasers) {
+		if ((chaser.GetComponent<ChaserController> ())) {
+			(chaser.GetComponent<ChaserController> ()).Reset ();
 		}
-		GameObject[] chasers = GameObject.FindGameObjectsWithTag("chaserDeath");
-		foreach (GameObject chaser in chasers) {
-			if ((chaser.GetComponent<ChaserController> ())) {
-				(chaser.GetComponent<ChaserController> ()).Reset ();
-			}
-		}
+	}
   }
 
   void OnGUI ()

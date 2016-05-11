@@ -84,6 +84,7 @@ public class GA : MonoBehaviour {
 	public void PlayerDied() {
 		population.Clear();
 		deadPopulation.Clear();
+		readyPopulation.Clear();
 		InitializePopulation();
 	}
 
