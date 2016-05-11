@@ -82,6 +82,11 @@ public class PGSystem : MonoBehaviour {
         Place(triShooter, numTriShooter);
         Place(chaser4, numChaser4);
         Place(sin4, numSin4);
+        Place(chaser, numChaser);
+        Place(lineShooter, numLine);
+        Place(desync, numDesync);
+        Place(sinEuler, numSEul);
+        Place(sinLava, numSLava);
 
         for(int i = 0; i < 10; ++i)
         {
@@ -120,7 +125,7 @@ public class PGSystem : MonoBehaviour {
 		levelDeaths = 0;
 		levelNum++;
 
-		if (levelNum >= 10) {
+		if (levelNum >= 8) {
 			isBoss = true;
 			SceneManager.LoadScene ("BossTest");
 		} else {
