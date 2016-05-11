@@ -50,13 +50,13 @@ public class BossController : MonoBehaviour {
   }
 
   void OnGUI() {
-    if(displayingEndState) {
-      string deathString;
-      if(playerDeath.deathCount == 0)
-        deathString = "Congratulations. You Won without losing a life";
-      else
-        deathString = "Congratulations. You Won but it cost "+playerDeath.deathCount.ToString()+" lives";
-      GUI.Box(new Rect(100, Screen.height - 30,400,200), deathString, playerDeath.style);
-    }
+    //if(displayingEndState) {
+    //  string deathString;
+    //  if(playerDeath.deathCount == 0)
+    //    deathString = "Congratulations. You Won without losing a life";
+    //  else
+    //    deathString = "Congratulations. You Won but it cost "+playerDeath.deathCount.ToString()+" lives";
+    //  GUI.Box(new Rect(100, Screen.height - 200,400,200), deathString, playerDeath.style);
+    //}
   }
 }
