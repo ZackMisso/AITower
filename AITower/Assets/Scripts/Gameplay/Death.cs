@@ -13,6 +13,7 @@ public class Death : MonoBehaviour {
   public int deathCount = 0;
   public Vector3 startPositionOne = new Vector3(0, 1, -44);
   public Vector3 startPositionTwo = new Vector3(0, 1, 44);
+  public Vector3 startPositionBoss;
   private GUIStyle style = new GUIStyle();
 
   void Start ()
@@ -55,7 +56,10 @@ public class Death : MonoBehaviour {
       wallController.Reset();
     }
     deathCount++;
-    if(pgRef.levelNum % 2 == 0) {
+	if (pgRef.levelNum >= 10) {
+		transform.position = startPositionBoss;
+	}
+    else if(pgRef.levelNum % 2 == 0) {
       transform.position = startPositionOne;
     } else {
       transform.position = startPositionTwo;
