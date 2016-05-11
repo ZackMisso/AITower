@@ -105,14 +105,15 @@ public class PGSystem : MonoBehaviour {
 	public void PlayerDied() {
 		levelDeaths++;
 		totalDeaths++;
-		if (levelNum >= 10) {
-			gaRef.PlayerDied ();
-		}
         if(levelDeaths > 5)
         {
             levelDeaths = 0;
             GenerateLevel();
         }
+	}
+
+	public void resetGA(){
+		gaRef.PlayerDied ();
 	}
 
 	public void BeatLevel() {

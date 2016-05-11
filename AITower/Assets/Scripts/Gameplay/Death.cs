@@ -51,27 +51,27 @@ public class Death : MonoBehaviour {
 
   void Die()
   {
-    pgRef.PlayerDied();
-    if(wallController != null) {
-      wallController.Reset();
-    }
-    deathCount++;
+	pgRef.PlayerDied();
+	if(wallController != null) {
+	  wallController.Reset();
+	}
+	deathCount++;
 	if (pgRef.levelNum >= 10) {
 		transform.position = startPositionBoss;
 		
 	}
-    else if(pgRef.levelNum % 2 == 0) {
-      transform.position = startPositionOne;
-    } else {
-      transform.position = startPositionTwo;
-    }
-    // pause movement
-    if(!delaying) {
-      delaying = true;
-      previousSpeed = walker.speed;
-      walker.speed = 0.0f;
-      deathStart = Time.time;
-    }
+	else if(pgRef.levelNum % 2 == 0) {
+	  transform.position = startPositionOne;
+	} else {
+	  transform.position = startPositionTwo;
+	}
+	// pause movement
+	if(!delaying) {
+	  delaying = true;
+	  previousSpeed = walker.speed;
+	  walker.speed = 0.0f;
+	  deathStart = Time.time;
+	}
 
 	GameObject[] bullets = GameObject.FindGameObjectsWithTag("bulletDeath");
 	foreach (GameObject bullet in bullets) {
@@ -82,6 +82,10 @@ public class Death : MonoBehaviour {
 		if ((chaser.GetComponent<ChaserController> ())) {
 			(chaser.GetComponent<ChaserController> ()).Reset ();
 		}
+	}
+
+	if(pgRef.levelNum >= 10){
+		pgRef.resetGA ();
 	}
   }
 
