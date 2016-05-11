@@ -48,6 +48,8 @@ public class MouseLook : MonoBehaviour {
 
   void Start() {
     originalRotation = transform.localRotation;
+    Screen.lockCursor = true;
+    Cursor.visible = false;
   }
 
   public static float ClampAngle(float angle, float min, float max) {
@@ -57,7 +59,7 @@ public class MouseLook : MonoBehaviour {
       angle -= 360F;
     return Mathf.Clamp(angle,min,max);
   }
-		
+
 	public void Reset(){
 		transform.localRotation = originalRotation;
 		rotationX = 0;
