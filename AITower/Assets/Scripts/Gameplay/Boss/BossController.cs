@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour {
   public PGSystem pgRef;
@@ -10,12 +11,10 @@ public class BossController : MonoBehaviour {
   public float lengthOfFight;
   private int counter;
   private bool bossFighting = false;
-  private bool displayingEndState = false;
 
   void Start() {
     //system.isBoss = true;
     spawnPoint = gameObject.transform.position;
-    // to be implemented
   }
 
   public void ResetBoss() {
@@ -46,17 +45,11 @@ public class BossController : MonoBehaviour {
   }
 
   public void DisplayEndState() {
-    displayingEndState = true;
+    SceneManager.LoadScene("WinScene");
   }
 
   void OnGUI() {
-    //if(displayingEndState) {
-    //  string deathString;
-    //  if(playerDeath.deathCount == 0)
-    //    deathString = "Congratulations. You Won without losing a life";
-    //  else
-    //    deathString = "Congratulations. You Won but it cost "+playerDeath.deathCount.ToString()+" lives";
-    //  GUI.Box(new Rect(100, Screen.height - 200,400,200), deathString, playerDeath.style);
-    //}
+    string timerString = "Time Left: " + (int)((lengthOfFight - (Time.time-startTime)));
+    GUI.Box(new Rect(5,5,80,25),timerString,playerDeath.style);
   }
 }
