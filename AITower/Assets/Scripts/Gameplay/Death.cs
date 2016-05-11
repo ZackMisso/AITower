@@ -100,6 +100,11 @@ public class Death : MonoBehaviour {
 		pgRef.resetGA();
     	bossController.ResetBoss();
 		walker.ResetMouseLook ();
+    if(deathCount != 0 && deathCount % 2 == 0) {
+      if(bossController.spawnNums != 1) {
+        bossController.spawnNums--;
+      }
+    }
 	} else {
     deathPersist.pgDeaths++;
   }

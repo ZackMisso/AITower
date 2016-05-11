@@ -11,6 +11,7 @@ public class BossController : MonoBehaviour {
   public float lengthOfFight;
   private int counter;
   private bool bossFighting = false;
+  public int spawnNums = 5;
 
   void Start() {
     //system.isBoss = true;
@@ -32,7 +33,7 @@ public class BossController : MonoBehaviour {
     }
     //Debug.Log("Updating Boss");
     if(bossFighting) {
-      for(int i=0;i<5;i++) {
+      for(int i=0;i<spawnNums;i++) {
         Individual bullet = gaRef.GetNextIndividual();
         if(bullet != null) {
           bullet.trajectory.initialPosition = gameObject.transform.position;
