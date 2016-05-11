@@ -29,7 +29,7 @@ public class DestroyBullet : MonoBehaviour {
 					gaRef.MakeIndividualDead(bc.trajID);
 				}
 			} else {
-				Debug.Log("Destroying");
+				//Debug.Log("Destroying");
       	Destroy(other.gameObject);
 			}
     }
