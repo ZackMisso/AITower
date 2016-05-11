@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PGSystem : MonoBehaviour {
 	public GA gaRef;
@@ -112,6 +113,9 @@ public class PGSystem : MonoBehaviour {
 	}
 
 	public void BeatLevel() {
+		if (levelNum >= 9) {
+			SceneManager.LoadScene ("BossTest");
+		}
 		levelDeaths = 0;
 		levelNum++;
 		GenerateLevel();
