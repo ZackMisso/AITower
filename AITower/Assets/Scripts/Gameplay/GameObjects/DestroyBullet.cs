@@ -21,7 +21,6 @@ public class DestroyBullet : MonoBehaviour {
     // This will need to be changed for GA. Trajectory should be updated
     if(other.gameObject.tag == "bulletDeath") {
 			if(pgRef.isBoss) {
-				Debug.Log("HEREH");
 				BulletController bc = other.gameObject.GetComponent<BulletController>();
 				bc.moving = false;
 				//bc.trajectory = null;
