@@ -15,7 +15,7 @@ public class Death : MonoBehaviour {
   public Vector3 startPositionOne = new Vector3(0, 1, -44);
   public Vector3 startPositionTwo = new Vector3(0, 1, 44);
   public Vector3 startPositionBoss;
-  private GUIStyle style = new GUIStyle();
+  public GUIStyle style = new GUIStyle();
 
   void Start ()
   {
