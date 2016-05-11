@@ -26,18 +26,18 @@ public class SineTrajectory : Trajectory {
 	// GA Methods
 	public override void Mutate(Constraints constraints) {
 		float losX = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
-		float losY = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
-		float losZ = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
+		float losY = lineOfSight.y + (Random.value - 0.5f) * 0.2f;
+		float losZ = lineOfSight.z + (Random.value - 0.5f) * 0.2f;
 		lineOfSight.x = losX;
 		lineOfSight.y = losY;
 		lineOfSight.z = losZ;
 		lineOfSight.Normalize();
 		speed += (Random.value - 0.5f) * 0.2f;
-		if(speed > constraints.TrajectoryMaxSpeed) {
-			speed = constraints.TrajectoryMaxSpeed;
+		if(speed > constraints.SineTrajectoryMaxSpeed) {
+			speed = constraints.SineTrajectoryMaxSpeed;
 		}
-		if(speed < constraints.TrajectoryMinSpeed) {
-			speed = constraints.TrajectoryMinSpeed;
+		if(speed < constraints.SineTrajectoryMinSpeed) {
+			speed = constraints.SineTrajectoryMinSpeed;
 		}
 		// trajectory specific mutation
 		amplitude += (Random.value - 0.5f) * 0.2f * (constraints.SineTrajectoryMaxAmplitude-constraints.SineTrajectoryMinAmplitude);
@@ -115,7 +115,11 @@ public class SineTrajectory : Trajectory {
 		}
 		newLos.Normalize();
 		lineOfSight = newLos;
-		speed += Random.value * (speed - other.speed);
+		if(other.type == 3) {
+			speed += Random.value * (speed - other.speed / 12.0f * 0.2f);
+		} else {
+			speed += Random.value * (speed / 12.0f * 0.2f - other.speed);
+		}
 	}
 
 	public override void CreateRandomSelf(Constraints constraints) {

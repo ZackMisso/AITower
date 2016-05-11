@@ -102,6 +102,7 @@ public class GA : MonoBehaviour {
 		deadPopulation.Add(ind);
 		// if list of dead is > 40 in size then evolve and replace
 		if(deadPopulation.Count >= 40) {
+			Debug.Log("BLAH");
 			// sort the list of dead individuals by their fitness
 			deadPopulation = Individual.Sort(deadPopulation);
 			for(int i=deadPopulation.Count-1;i>=0;i--) {
@@ -111,9 +112,13 @@ public class GA : MonoBehaviour {
 					individual.trajectory.Mutate(constraints);
 				} else {
 					// crossover and mutate :: to make things simpler
-					Individual toCross = deadPopulation[Random.Range(0,10)];
-					individual.trajectory.Crossover(constraints,toCross.trajectory);
-					individual.trajectory.PostCrossoverMutate(constraints);
+					if(Random.value > 0.75f) {
+						Individual toCross = deadPopulation[Random.Range(0,10)];
+						individual.trajectory.Crossover(constraints,toCross.trajectory);
+						individual.trajectory.PostCrossoverMutate(constraints);
+					} else {
+						individual.trajectory.Mutate(constraints);
+					}
 				}
 				// make the individual ready
 				readyPopulation.Add(individual);
@@ -273,7 +278,7 @@ public class GA : MonoBehaviour {
 		individual.trajType = 3;
 		// shared data
 		Vector3 lineOfSight = CreateRandomLineOfSight();
-		float speed = Random.value * (constraints.TrajectoryMaxSpeed - constraints.TrajectoryMinSpeed) + constraints.TrajectoryMinSpeed;
+		float speed = Random.value * (constraints.SineTrajectoryMaxSpeed - constraints.SineTrajectoryMinSpeed) + constraints.SineTrajectoryMinSpeed;
 		traj.speed = speed;
 		traj.lineOfSight = lineOfSight;
 		// traj spacific data

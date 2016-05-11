@@ -18,8 +18,8 @@ public class LineTrajectory : Trajectory {
 	// GA Methods
 	public override void Mutate(Constraints constraints) {
 		float losX = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
-		float losY = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
-		float losZ = lineOfSight.x + (Random.value - 0.5f) * 0.2f;
+		float losY = lineOfSight.y + (Random.value - 0.5f) * 0.2f;
+		float losZ = lineOfSight.z + (Random.value - 0.5f) * 0.2f;
 		lineOfSight.x = losX;
 		lineOfSight.y = losY;
 		lineOfSight.z = losZ;
@@ -81,7 +81,11 @@ public class LineTrajectory : Trajectory {
 		}
 		newLos.Normalize();
 		lineOfSight = newLos;
-		speed += Random.value * (speed - other.speed);
+		if(other.type == 3) {
+			speed += Random.value * (speed - other.speed / 12.0f * 0.2f);
+		} else {
+			speed += Random.value * (speed - other.speed);
+		}
 	}
 
 	public override void CreateRandomSelf(Constraints constraints) {
