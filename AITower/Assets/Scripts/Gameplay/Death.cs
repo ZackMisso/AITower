@@ -88,6 +88,7 @@ public class Death : MonoBehaviour {
 	if(pgRef.isBoss){
 		pgRef.resetGA();
     	bossController.ResetBoss();
+		walker.ResetMouseLook ();
 	}
   }
 

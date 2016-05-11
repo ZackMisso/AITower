@@ -53,4 +53,8 @@ public class FPSWalker : MonoBehaviour {
 			characterController.Move(moveDirection * Time.fixedDeltaTime);
 		}
 	}
+
+	public void ResetMouseLook(){
+		mouseLook.Reset ();
+	}
 }

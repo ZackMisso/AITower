@@ -57,4 +57,10 @@ public class MouseLook : MonoBehaviour {
       angle -= 360F;
     return Mathf.Clamp(angle,min,max);
   }
+		
+	public void Reset(){
+		transform.localRotation = originalRotation;
+		rotationX = 0;
+		rotationY = 0;
+	}
 }
