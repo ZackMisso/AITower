@@ -56,7 +56,7 @@ public class Death : MonoBehaviour {
 	  wallController.Reset();
 	}
 	deathCount++;
-	if (pgRef.levelNum >= 10) {
+	if (pgRef.isBoss) {
 		transform.position = startPositionBoss;
 		
 	}
@@ -84,7 +84,7 @@ public class Death : MonoBehaviour {
 		}
 	}
 
-	if(pgRef.levelNum >= 10){
+	if(pgRef.isBoss){
 		pgRef.resetGA ();
 	}
   }
