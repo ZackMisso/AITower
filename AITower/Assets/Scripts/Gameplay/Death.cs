@@ -4,6 +4,7 @@ using System.Collections;
 public class Death : MonoBehaviour {
   public PGSystem pgRef = null;
   public FPSWalker walker = null;
+  public BossController bossController = null;
   public WallController wallController = null;
   public float deathDelay = 1.0f;
   private float deathStart = 0.0f;
@@ -58,7 +59,7 @@ public class Death : MonoBehaviour {
 	deathCount++;
 	if (pgRef.isBoss) {
 		transform.position = startPositionBoss;
-		
+
 	}
 	else if(pgRef.levelNum % 2 == 0) {
 	  transform.position = startPositionOne;
@@ -85,7 +86,8 @@ public class Death : MonoBehaviour {
 	}
 
 	if(pgRef.isBoss){
-		pgRef.resetGA ();
+		pgRef.resetGA();
+    bossController.ResetBoss();
 	}
   }
 
